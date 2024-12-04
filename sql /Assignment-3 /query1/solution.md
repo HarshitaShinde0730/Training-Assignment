@@ -1,6 +1,6 @@
 **Query:** How many single-item orders were fulfilled from warehouses in the last month?
 
-**Query cost:**
+**Query cost:** 19718.30
 
 **Solution:**
 ```sql
