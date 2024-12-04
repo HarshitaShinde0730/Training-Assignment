@@ -1,5 +1,7 @@
 **Query:** How many single-item orders were fulfilled from warehouses in the last month? 
+  
 **Query cost:** 
+  
 **Solution:** 
 ```sql
   
