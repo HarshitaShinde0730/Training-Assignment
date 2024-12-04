@@ -1,6 +1,6 @@
 **Query:** On a city-wise basis, what is the analysis of returns?
 
-**Query_cost:** 
+**Query_cost:** 61.23
 
 **Solution** 
 ```sql
