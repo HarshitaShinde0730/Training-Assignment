@@ -9,7 +9,7 @@
 - ENTRY_DATE
 - RETURN_CHANNEL_ENUM_ID
 
-**Query-cost:**
+**Query-cost:** 20091.36
 
 **Solution:**
 ```sql
