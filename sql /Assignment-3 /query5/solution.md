@@ -1,6 +1,6 @@
 **Query:** In New York, which product has the highest sales
 
-**Query cost:** 
+**Query cost:** 11715.12
 
 **Solution:**
 ```sql
