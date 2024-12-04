@@ -13,7 +13,7 @@
 - ORDER_TYPE_ID
 - PRODUCT_STORE_ID 
 
-**Query-cost:** 
+**Query-cost:** 70053.26
 
 **Solution** 
 ```sql
