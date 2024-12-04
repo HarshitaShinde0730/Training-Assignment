@@ -1,6 +1,6 @@
 **Query:** In the period following the New Year, what is the number of orders shipped from stores in the first 25 days?
 
-**Query cost:** 
+**Query cost:** 270221027.55
 
 **Solution:**
 ```sql
