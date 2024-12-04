@@ -1,6 +1,6 @@
 **Query:** What is the total number of orders originating from New York?
 
-**Query cost:** 7,942.97
+**Query cost:** 10606.51
 
 **Solution:**
 ```sql
