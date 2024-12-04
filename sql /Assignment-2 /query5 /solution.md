@@ -4,7 +4,7 @@
 - SHOPIFY_ORDER_ID
 - SHOPIFY_PRODUCT_ID
 
-**Query-cost:**
+**Query-cost:** 18,221,651.8
 
 **Solution:**
 ```sql
