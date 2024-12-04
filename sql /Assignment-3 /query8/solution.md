@@ -1,6 +1,6 @@
 **Query:** How many orders with a single return were recorded in the last month?
 
-**Query_cost:** 
+**Query_cost:** 58.19
 
 **Solution:**
 ```sql
