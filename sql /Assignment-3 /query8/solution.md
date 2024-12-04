@@ -5,18 +5,25 @@
 **Solution:**
 ```sql
 select 
-       count(ri.ORDER_ID) as SINGLE_ORDER_RETURN
+       count(*)      
 from 
-     return_header rh 
-join
-     return_item ri 
-on 
-  ri.RETURN_ID = rh.RETURN_ID 
-where 
-     rh.RETURN_DATE >=DATE_ADD(current_date(), interval - 1 month)
-and 
-     rh.RETURN_DATE < current_date()
-group by 
-     ri.RETURN_ID, ri.ORDER_ID 
-having 
-     SINGLE_ORDER_RETURN = 1 ;
+    (
+     select ri.ORDER_ID
+     from 
+         return_header rh 
+     join
+     	return_item ri 
+	on 
+       ri.RETURN_ID = rh.RETURN_ID 
+   where 
+       rh.RETURN_DATE >=DATE_ADD(current_date(), interval - 1 month)
+   and 
+        rh.RETURN_DATE < current_date()
+   group by 
+         ri.ORDER_ID 
+   having
+          count(ri.order_id) = 1)
+as  SINGLE_ORDER_RETURN ;   
+    
+    
+    
