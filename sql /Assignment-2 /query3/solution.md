@@ -1,6 +1,6 @@
 **Query:** Fetch the order id and contact mech id for the shipping address of the orders completed in October of 2023.
 
-**Query-cost:**
+**Query-cost:** 110731.46
 
 **Solution:** 
 ```sql
