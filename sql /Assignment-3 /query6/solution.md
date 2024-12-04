@@ -1,6 +1,6 @@
 **Query:** In the past month, which store has the highest number of one-day shipped orders?
 
-**Query_Cost:** 
+**Query_Cost:** 10977.48
 
 **Solution:** 
 ```sql
