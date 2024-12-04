@@ -1,7 +1,7 @@
 
 **Query:** Leading up to the New Year, what is the count of orders shipped from stores in the 25 days preceding the New Year?
 
-**Query cost:** 21,603.31
+**Query cost:** 270221027.55
 
 **Solution:**
 ```sql
