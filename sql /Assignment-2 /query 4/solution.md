@@ -8,7 +8,7 @@
 - The total amount represents the total amount of the order.
 - The payment method is the method by which payment was made, like Cash, mastercard, visa, paypal, etc.
 
-**Query-cost:**
+**Query-cost:** 3096.51
 
 **Solution:**
 ```slq
