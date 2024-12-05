@@ -1,5 +1,30 @@
 **Query:** Fetch all the physical items ordered in the month of September 2023.
 
+**Query cost**: 15604.67
+
+**Solution:**
+```sql
+select 
+     oh.ORDER_ID ,
+     oi.ORDER_ITEM_SEQ_ID ,
+     pt.IS_PHYSICAL,
+     oi.STATUS_ID,
+     oh.ENTRY_DATE
+from
+     product_type pt
+join  
+     product p 
+     on pt.PRODUCT_TYPE_ID = p.PRODUCT_TYPE_ID
+     and pt.IS_PHYSICAL = 'Y'
+join
+	 order_item oi 
+	 on p.PRODUCT_ID = oi.PRODUCT_ID
+	 and oi.STATUS_ID = 'item_created'
+join 
+     order_header oh 
+     on  oi.ORDER_ID = oh.ORDER_ID   
+     and oh.ORDER_DATE between '2023-09-01' and '2023-09-30'
+```
 **Query cost**: 16352.91
 
 **Solution:**
