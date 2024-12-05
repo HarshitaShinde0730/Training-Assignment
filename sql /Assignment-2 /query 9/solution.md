@@ -9,11 +9,11 @@ select
       count(oi.order_item_seq_id) as ORDER_ITEM
 from 
       order_header oh 
-join 
-	   order_item oi on oh.ORDER_ID  = oi.ORDER_ID
+join
+      order_item oi on oh.ORDER_ID  = oi.ORDER_ID
 where 
-	   oi.STATUS_ID  = 'item_cancelled' and oh.STATUS_ID = 'order_approved'
+      oi.STATUS_ID  = 'item_cancelled' and oh.STATUS_ID = 'order_approved'
 group by 
-		oh.ORDER_ID
+      oh.ORDER_ID
 having 
-		ORDER_ITEM  >= 2 ;
+      ORDER_ITEM  >= 2 ;
