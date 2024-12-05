@@ -18,6 +18,55 @@
 - SHIP_ADDRESS1
 - SHIP_ADDRESS2
 
+**Query cost**: 32643728.69
+
+**Solution:** 
+```sql
+select 
+      oh.ORDER_ID,
+      p.PRODUCT_TYPE_ID,
+      oi.EXTERNAL_ID as ORDER_LINE_ID,
+      oh.EXTERNAL_ID,
+      oh.SALES_CHANNEL_ENUM_ID as SALES_CHANNEL,
+      oi.QUANTITY,
+      oi.STATUS_ID,
+      p.PRODUCT_ID,
+      ocm.CONTACT_MECH_PURPOSE_TYPE_ID,
+      pa.city as Bill_City,
+      tn.COUNTRY_CODE as BILL_COUNTRY,
+      pa.POSTAL_CODE as BILL_POSTALCODE,
+      pa.ADDRESS1 as BILL_ADDRESS,
+      pa.ADDRESS2 as BILL_ADDRESS,
+      pa.city as SHIP_City,
+      tn.COUNTRY_CODE as SHIP_COUNTRY,
+      pa.POSTAL_CODE as SHIP_POSTALCODE,
+      pa.ADDRESS1 as SHIP_ADDRESS,
+      pa.ADDRESS2 as SHIP_ADDRESS
+from 
+     order_header oh 
+join 
+     order_item oi 
+     on oh.ORDER_ID = oi.ORDER_ID
+     and oh.ORDER_TYPE_ID = 'sales_order'
+     and oi.STATUS_ID = 'item_created'
+     and oh.EXTERNAL_ID is not null 
+     and oi.EXTERNAL_ID is not null   
+join
+     product p 
+     on p.PRODUCT_ID = oi.PRODUCT_ID
+join 
+     order_contact_mech ocm 
+     on ocm.CONTACT_MECH_ID = oh.ORDER_ID
+     and ocm.CONTACT_MECH_PURPOSE_TYPE_ID in ('BILLING_LOCATION', 'SHIPPING_LOCATION')
+left join 
+    postal_address pa 
+    on ocm.CONTACT_MECH_ID = pa.CONTACT_MECH_ID
+    and ocm.CONTACT_MECH_PURPOSE_TYPE_ID in ('BILLING_LOCATION' , 'SHIPPING_LOCATION')
+left join 
+     telecom_number tn  
+     on ocm.CONTACT_MECH_ID = pa.CONTACT_MECH_ID
+     and ocm.CONTACT_MECH_PURPOSE_TYPE_ID in ('SHIPPING_LOCATION', 'Billing_location')
+```
 **Query cost**: 53566105.21
 
 **Solution:** 
@@ -55,3 +104,4 @@ join
 join 
      telecom_number tn  on ocm.CONTACT_MECH_ID = pa.CONTACT_MECH_ID 
 where oi.STATUS_ID = 'item_created' and oh.ORDER_TYPE_ID = 'sales_order' and oh.EXTERNAL_ID is not null and oi.EXTERNAL_ID is not null;
+```
