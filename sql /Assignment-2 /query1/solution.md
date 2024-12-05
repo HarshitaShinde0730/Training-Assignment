@@ -17,36 +17,36 @@
 
 **Solution** 
 ```sql
-select 
-     oh.ORDER_ID,
-     oi.ORDER_ITEM_SEQ_ID,
-     p.PRODUCT_ID,
-     p.PRODUCT_TYPE_ID,
-     pt.IS_PHYSICAL,
-     pt. IS_DIGITAL,
-     oh.SALES_CHANNEL_ENUM_ID,
-     oh.ORDER_DATE,
-     oh.ENTRY_DATE,
-     oh.STATUS_ID,
-     oi.STATUS_ID ,
-     oh.ORDER_TYPE_ID,
-     os.STATUS_DATETIME ,
-     oh.PRODUCT_STORE_ID
-from
+SELECT 
+    oh.ORDER_ID,
+    oi.ORDER_ITEM_SEQ_ID,
+    p.PRODUCT_ID,
+    oh.SALES_CHANNEL_ENUM_ID,
+    oh.ORDER_DATE,
+    oh.ENTRY_DATE,
+    oh.STATUS_ID AS ORDER_STATUS_ID,
+    oi.STATUS_ID AS ITEM_STATUS_ID,
+    oh.ORDER_TYPE_ID,
+    os.STATUS_DATETIME,
+    oh.PRODUCT_STORE_ID
+FROM
     order_header oh
-join
-    order_item oi on oh.ORDER_ID = oi.ORDER_ID
-join
-     product p on p.PRODUCT_ID = oi.PRODUCT_ID
-join 
-     product_type pt on pt.PRODUCT_TYPE_ID = p.PRODUCT_TYPE_ID
-join 
-    order_status os on oh.ORDER_ID = os.ORDER_ID
-where 
+JOIN
+    order_item oi 
+    ON oh.ORDER_ID = oi.ORDER_ID
+JOIN
+    product p 
+    ON p.PRODUCT_ID = oi.PRODUCT_ID
+JOIN 
+    order_status os 
+    ON oh.ORDER_ID = os.ORDER_ID
+WHERE
     oh.PRODUCT_STORE_ID = 'SM_STORE' 
-and 
-    oi.STATUS_ID = 'ITEM_COMPLETED' 
-and
-    oh.ORDER_TYPE_ID = 'SALES_ORDER' 
-and 
-   pt.IS_PHYSICAL = 'Y';
+    AND oi.STATUS_ID = 'ITEM_COMPLETED'
+    AND oh.ORDER_TYPE_ID = 'SALES_ORDER' 
+    AND EXISTS (
+        SELECT 1
+        FROM product_type pt
+        WHERE pt.PRODUCT_TYPE_ID = p.PRODUCT_TYPE_ID
+          AND pt.IS_PHYSICAL = 'Y'
+);
