@@ -8,6 +8,32 @@
      - If there's a delay in delivery, the company might offer a voucher or credit to apologize.
 
 
+**Query cost**: 194.71
+
+**Solution:**
+```sql
+select 
+       rh.RETURN_ID,
+       rh.ENTRY_DATE,
+       ra.RETURN_TYPE_ID ,
+       ra.AMOUNT,
+       ra.COMMENTS,
+       ra.ORDER_ID,
+       oh.ORDER_DATE,
+       rh.RETURN_DATE,
+       oh.PRODUCT_STORE_ID
+from 
+     return_header rh 
+join 
+     return_adjustment ra 
+     on rh.RETURN_ID = ra.RETURN_ID 
+     and ra.RETURN_ADJUSTMENT_TYPE_ID = 'APPEASEMENT'
+join 
+     order_header oh 
+     on oh.ORDER_ID = ra.ORDER_ID
+where 
+     rh.RETURN_DATE between '2023-07-01' and '2023-07-31';
+```
 **Query cost**: 3877315.01
 
 **Solution:**
