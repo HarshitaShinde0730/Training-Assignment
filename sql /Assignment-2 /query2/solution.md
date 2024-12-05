@@ -36,6 +36,6 @@ where
 and 
      oh.PRODUCT_STORE_ID = 'sm_store' 
 and 
-     rh.RETURN_CHANNEL_ENUM_ID = 'ecom_rtn_channel'
+     rh.RETURN_CHANNEL_ENUM_ID = 'ecom_rtn_channel';
 
 
