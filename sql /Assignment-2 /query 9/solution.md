@@ -17,3 +17,4 @@ group by
       oh.ORDER_ID
 having 
       ORDER_ITEM  >= 2 ;
+      
