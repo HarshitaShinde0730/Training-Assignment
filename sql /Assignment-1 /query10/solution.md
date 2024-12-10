@@ -6,17 +6,17 @@
 **Solution**:
 ```sql
 select 
-       oisg.ORDER_ID
+  oisg.ORDER_ID
 from 
-    order_item_ship_group oisg 
+  order_item_ship_group oisg 
 join 
-     facility f on f.FACILITY_ID = oisg.FACILITY_ID 
-where 
-     f.FACILITY_TYPE_ID not in ('back_order' , 'pre_order' , 'virtual_facility')
+  facility f 
+  on f.FACILITY_ID = oisg.FACILITY_ID 
+  and f.FACILITY_TYPE_ID not in ('back_order' , 'pre_order' , 'virtual_facility')
 union all 
 select
-       oh.status_id
+  oh.status_id
 from 
-     order_header oh 
-where 
-     oh.STATUS_ID != 'ORDER_COMPLETED' 
+  order_header oh 
+where
+  oh.STATUS_ID != 'ORDER_COMPLETED' 
