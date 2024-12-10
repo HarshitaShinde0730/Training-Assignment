@@ -5,22 +5,24 @@
 
 **Solution:** 
 ```sql
-select 'January_shipment' as Shipment_Type,
-       count(*) as Shipment_Count
+select 
+     'January_shipment' as Shipment_Type,
+      count(*) as Shipment_Count
 from 
       shipment s
 where 
       s.STATUS_ID = 'shipment_shipped'
- and 
+      and 
       month(s.CREATED_DATE) = 1
- and 
-     year(s.CREATED_DATE) = 2022
+      and 
+      year(s.CREATED_DATE) = 2022
 union all
-select 'Total_shipment' as Shipment_Type, 
+select 
+      'Total_shipment' as Shipment_Type, 
        count(*) as Shipment_Count
 from 
-     shipment s2
+      shipment s2
 where 
-     s2.STATUS_ID = 'shipment_shipped'
-and 
-    date(s2.CREATED_DATE) between '2022-01-01' and '2022-03-31';
+      s2.STATUS_ID = 'shipment_shipped'
+      and 
+      date(s2.CREATED_DATE) between '2022-01-01' and '2022-03-31';
