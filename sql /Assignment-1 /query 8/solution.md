@@ -5,14 +5,14 @@
 **Soutlion**: 
 ```sql
 select 
-        oi.ORDER_ID,
-        oi.SHIP_GROUP_SEQ_ID,
-       count(oi.ORDER_ITEM_SEQ_ID) as ITEM_IN_SHIP_GROUP
+   oi.ORDER_ID,
+   oi.SHIP_GROUP_SEQ_ID,
+   count(oi.ORDER_ITEM_SEQ_ID) as ITEM_IN_SHIP_GROUP
 from 
-      order_item oi
+   order_item oi
  where 
-       oi.ORDER_ITEM_SEQ_ID is not null
+   oi.ORDER_ITEM_SEQ_ID is not null
 group by 
-       oi.ORDER_ID
+   oi.ORDER_ID
 having 
-       ITEM_IN_SHIP_GROUP > 1;
+   ITEM_IN_SHIP_GROUP > 1;
