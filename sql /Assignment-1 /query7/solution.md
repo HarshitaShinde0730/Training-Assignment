@@ -4,17 +4,19 @@
 **Query-cost**: 7333.80
 
 **Solution**: 
-```slq
+```sql
 select 
-       oi.order_id,
-       oi.order_item_seq_id,
-       oi.status_id,
-       opp.status_id
+   oi.order_id,
+   oi.order_item_seq_id,
+   oi.status_id,
+   opp.status_id
 from   
-	order_item oi  
+   order_item oi  
 join 
-    order_payment_preference opp on opp.ORDER_ID = oi.ORDER_ID
+   order_payment_preference opp 
+   on opp.ORDER_ID = oi.ORDER_ID
 where 
-      oi.STATUS_ID != 'item_completed'
-and 
-     opp.STATUS_ID = 'payment_settled'
+   oi.STATUS_ID != 'item_completed'
+   and 
+   opp.STATUS_ID = 'payment_settled'
+```
