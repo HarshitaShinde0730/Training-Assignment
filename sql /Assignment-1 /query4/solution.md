@@ -6,16 +6,19 @@
 **Solution**:
 ```sql
 select
-  f.FACILITY_NAME ,
-  s.origin_facility_id AS location_id,
-  SUM(si.quantity) AS shipped_units
-FROM
-  shipment s
-JOIN
-  shipment_item si ON s.shipment_id = si.shipment_id
-join facility f on s.ORIGIN_FACILITY_ID =f.FACILITY_ID  
-WHERE
-  s.status_id = 'SHIPMENT_SHIPPED'
-GROUP BY
-  s.origin_facility_id
-order by shipped_units desc;
+   f.FACILITY_NAME ,
+   s.origin_facility_id as location_id,
+   sum(si.quantity) as shipped_units
+from
+   shipment s
+join
+   shipment_item si 
+   on s.shipment_id = si.shipment_id
+   and s.status_id = 'SHIPMENT_SHIPPED'
+join 
+   facility f 
+   on s.ORIGIN_FACILITY_ID =f.FACILITY_ID  
+group by
+   s.origin_facility_id
+order by 
+   shipped_units desc;
