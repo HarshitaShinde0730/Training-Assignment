@@ -38,4 +38,7 @@ JOIN
 - Second Query:
   - Filters while joining → **Fast and cheaper**.
 
+**Tutorial to learn about query-optimization**: 
+[Query-optimization](https://www.youtube.com/watch?v=AFY3z4FwRg0)
+
 
