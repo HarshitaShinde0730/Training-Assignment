@@ -39,6 +39,6 @@ JOIN
   - Filters while joining → **Fast and cheaper**.
 
 **Tutorial to learn about query-optimization**: 
-[Query-optimization](https://www.youtube.com/watch?v=AFY3z4FwRg0)
+[Query-optimization](https://www.google.com/search?sca_esv=3b91e47ab754cb87&q=execution+flow+of+date+function+in+sql+with+diagram&udm=7&fbs=AEQNm0Aa4sjWe7Rqy32pFwRj0UkWd8nbOJfsBGGB5IQQO6L3J9LTkYkTMsFy3KExiuH6ofO9k4fklbg-dHv8qWa0fUb_b9pU6N0PYQYkHPJveIzUCnC9Ko6wTULCndh2ijbl5espd1t1e8fieAki5GcIWTKxx9GdNXufsU0l4Hg-1cY-eKoSXFBG9lse2O1_02qeMe67fULN9iDwZZv1jIEvIv4Xdzp9mg&sa=X&ved=2ahUKEwjowqb2ypyKAxUEsVYBHZCbIycQtKgLegQIFxAB&biw=1366&bih=649&dpr=1#fpstate=ive&vld=cid:3b15740b,vid:t2R0-xcKw44,st:0)
 
 
