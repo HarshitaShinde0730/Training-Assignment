@@ -6,12 +6,12 @@
   **Solution**:
   ```sql
 select
-      SUM(oa.AMOUNT) as SHIPPING_REVENUE
+  sum(oa.AMOUNT) as SHIPPING_REVENUE
 from 
-     order_adjustment oa
+  order_adjustment oa
 join 
-     order_header oh on oh.ORDER_ID = oa.ORDER_ID
+  order_header oh 
+  on oh.ORDER_ID = oa.ORDER_ID
+  and oh.ENTRY_DATE >= curdate() - interval 1 month
 where 
-     oa.ORDER_ADJUSTMENT_TYPE_ID = 'shipping_charges'
-and 
-     oh.ENTRY_DATE >= curdate() - interval 1 month;
+  oa.ORDER_ADJUSTMENT_TYPE_ID = 'shipping_charges'
