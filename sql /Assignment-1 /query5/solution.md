@@ -6,18 +6,21 @@
 **Solution**: 
 ```sql
 select 
-   oh.ORDER_DATE AS order_date,
-   COUNT(distinct oh.ORDER_ID) AS order_count, 
-   COUNT(distinct oi.ORDER_ITEM_SEQ_ID) AS order_item_count ,
+   oh.ORDER_DATE as order_date,
+   count(distinct oh.ORDER_ID) as order_count, 
+   count(oi.ORDER_ITEM_SEQ_ID) as order_item_count ,
    sum(oi.QUANTITY) as total_item_quantity
 from
    order_header oh
 join
-   order_item oi ON oh.ORDER_ID = oi.ORDER_ID
-where
-   oh.ORDER_DATE >= NOW() - INTERVAL 7 DAY
+   order_item oi 
+   on oh.ORDER_ID = oi.ORDER_ID
+   and oh.ORDER_DATE > = now() - interval 7 day
 group by 
-   DATE(oh.ORDER_DATE); 
+   oh.ORDER_DATE; 
+
+
+
 
 
 
