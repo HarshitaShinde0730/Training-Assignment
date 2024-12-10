@@ -6,16 +6,16 @@
 **Solution**:
 ```sql
 select 
-        s.ORIGIN_FACILITY_ID as location_id,
-        SUM(si.QUANTITY) as total_fulfilled_units
+  s.ORIGIN_FACILITY_ID as location_id,
+  sum(si.QUANTITY) as total_fulfilled_units
 from 
-     shipment s
+  shipment s
 join 
-     shipment_item si on s.SHIPMENT_ID = si.SHIPMENT_ID
-where 
-     s.STATUS_ID = 'SHIPMENT_SHIPPED'
+  shipment_item si 
+  on s.SHIPMENT_ID = si.SHIPMENT_ID
+  and s.STATUS_ID = 'SHIPMENT_SHIPPED'
 group by
-     s.ORIGIN_FACILITY_ID
+  s.ORIGIN_FACILITY_ID
 order by
-     total_fulfilled_units desc
+  total_fulfilled_units desc;
 
