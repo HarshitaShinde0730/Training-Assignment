@@ -15,7 +15,7 @@ Why I choose EXECUTE SQL RECORD PROCESSOR:-
 - In EXECUTE SQL RECORD create DatabaseConnectionPool service where I configure database to Nifi using JDBC Driver and Database 
   Connection Url.
 
-Why I choose EXECUTE SQL RECORD PROCESSOR:-
+Why I choose SPLITRECORD PROCESSOR:-
 
 - In this configuration, RECORD READER is set to be JSONTREEREADER to read JSON data.
 - In this configuration, RECORD WRITER is set to be CSVSETWRITE to parse JSON data in CSV data.
