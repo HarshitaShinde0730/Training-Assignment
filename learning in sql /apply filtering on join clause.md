@@ -38,7 +38,17 @@ JOIN
 - Second Query:
   - Filters while joining → **Fast and cheaper**.
 
-**Tutorial to learn about query-optimization**: 
+ **Visualize table**:
+Visualize table are
+
+| Tables                 | Optimized Query          | Query                          |
+| -------------          |:-------------:           | -----:                         |
+| Full Table Scan        | rh (3.52K rows)          | ri (2K rows)                   |
+| Nested Loop Joins      | 3 loops (efficient)      | 3 loops (high rows processed)  |
+| Unique Key Lookup      | Efficient on oh and rs   | Efficient but repeated         |
+| Non-Unique Key Lookup  | Minimal rows (3 rows)    | High rows (1.18K rows)         |
+
+**Tutorial to learn about query optimization**: 
 [Query-optimization](https://www.google.com/search?sca_esv=3b91e47ab754cb87&q=execution+flow+of+date+function+in+sql+with+diagram&udm=7&fbs=AEQNm0Aa4sjWe7Rqy32pFwRj0UkWd8nbOJfsBGGB5IQQO6L3J9LTkYkTMsFy3KExiuH6ofO9k4fklbg-dHv8qWa0fUb_b9pU6N0PYQYkHPJveIzUCnC9Ko6wTULCndh2ijbl5espd1t1e8fieAki5GcIWTKxx9GdNXufsU0l4Hg-1cY-eKoSXFBG9lse2O1_02qeMe67fULN9iDwZZv1jIEvIv4Xdzp9mg&sa=X&ved=2ahUKEwjowqb2ypyKAxUEsVYBHZCbIycQtKgLegQIFxAB&biw=1366&bih=649&dpr=1#fpstate=ive&vld=cid:3b15740b,vid:t2R0-xcKw44,st:0)
 
 
