@@ -33,6 +33,13 @@
 
 **NOTE:** It depends on the data represented in the database. In many cases, SQL DATE FUNCTION is not more efficient than SQL BETWEEN.
 
+##### EXECUTION PLAN OF BETWEEN:-
+![EXECUTION PLAN OF BETWEEN](https://github.com/HarshitaShinde0730/Training-Assignment/blob/main/learning%20in%20sql%20/images/EXECUTION%20PLAN%20OF%20BETWEEN.png)
+-
+#### EXECUTION PLAN OF DATE FUNCTION IN SQL:-
+![EXECUTION PLAN OF DATE FUNCTION](https://github.com/HarshitaShinde0730/Training-Assignment/blob/main/learning%20in%20sql%20/images/EXECUTION%20PLAN%20OF%20DATE%20FUNCTION.png)
+-
+
     
 
 
