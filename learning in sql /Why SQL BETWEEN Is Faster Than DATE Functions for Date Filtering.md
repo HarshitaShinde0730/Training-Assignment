@@ -30,6 +30,8 @@
 - **Direct Access:** Operates directly on indexed columns.
 - **No Computation:** Doesn't require function calls on every row.
 - **Optimized Execution:** Designed for range-based filtering, which is faster for large datasets.
+
+**NOTE:** It depends on the data represented in the database. In many cases SQL DATE FUNCTION are not more e  
     
 
 
