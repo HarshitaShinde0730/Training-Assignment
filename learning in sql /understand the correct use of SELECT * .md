@@ -32,6 +32,6 @@ where
    p.CREATED_TX_STAMP between '2023-06-01' and '2023-06-30';
 ```
 **NOTE**: It only optimizes the execution time of the query.
-
+###### For more detail read the book "HIGH PERFORMANCE MYSQL" chapter 8:- Query Performance Optimization: Page.no:- 191
 
 
