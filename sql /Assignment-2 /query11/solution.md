@@ -25,4 +25,5 @@ select
 from 
    party p
 where 
-  month (p.CREATED_DATE) = 06;
+  month (p.CREATED_TX_STAMP) = 6
+  and year(p.CREATED_TX_STAMP) = 2023;
