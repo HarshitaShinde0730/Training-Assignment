@@ -63,7 +63,7 @@ cost-based optimization (CBO) is an integral part of many modern SQL query optim
 
   - Fitness value calculation for each plan.
  
-- **3. Plan Pruning**:- Reduce search space plan (All possible solutions) by calculation the expensive cost and infeasible 
+**4. Plan Pruning**:- Reduce search space plan (All possible solutions) by calculation the expensive cost and infeasible 
   plan.
 
 - **Branch-and-Bound**:
