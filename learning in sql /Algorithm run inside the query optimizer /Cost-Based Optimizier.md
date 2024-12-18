@@ -81,7 +81,7 @@ cost-based optimization (CBO) is an integral part of many modern SQL query optim
 ![alt text](https://github.com/HarshitaShinde0730/Training-Assignment/blob/main/learning%20in%20sql%20/images/Screenshot%20from%202024-12-18%2010-28-34.png)
 
 ###### Note: [Learn](https://www.querifylabs.com/blog/what-is-cost-based-optimization)
-COST-BASED OPTIMIZATION IS NOT AN ALGORITHM ITSELF BUT IT IS A FRAMEWORK WITHIN A SQL SERVER that LEVERAGES MULTIPLE ALGORITHMS, INCLUDING SEARCH, ESTIMATION, AND PRUNING TECHNIQUES.
+COST-BASED OPTIMIZATION IS NOT AN ALGORITHM ITSELF BUT IT IS A METHOD WITHIN AN SQL SERVER THAT LEVERAGES MULTIPLE ALGORITHMS, INCLUDING SEARCH, ESTIMATION, AND PRUNING TECHNIQUES.
 
 
 
