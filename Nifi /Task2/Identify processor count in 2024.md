@@ -45,6 +45,8 @@ fs.readFile(inputFilePath, 'utf8', (err, data) => {
 
 **4. Step - 4:** Then, a flow was generated through NiFi in which the JSON data was converted into CSV.
 
+![image](https://github.com/HarshitaShinde0730/Training-Assignment/blob/main/Nifi%20/Task2/Task2.png)
+
 **5. Step - 5:** Then, the CSV data received was modified through JavaScript to count the processors.
 
 ```javascript
