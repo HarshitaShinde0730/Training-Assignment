@@ -53,8 +53,8 @@ fs.readFile(inputFilePath, 'utf8', (err, data) => {
 const fs = require('fs');
 const readline = require('readline');
 
-const inputFilePath = '/home/harshita/output/Nifi.output.txt'; // Path to the .txt file
-const outputFilePath = '/home/harshita/output/Nifio1.csv'; // Path to save the .csv file
+const inputFilePath = '/home/harshita/output/Nifi.output.txt'; 
+const outputFilePath = '/home/harshita/output/Nifio1.csv'; 
 
 const inputStream = fs.createReadStream(inputFilePath);
 const outputStream = fs.createWriteStream(outputFilePath);
@@ -75,12 +75,12 @@ rl.on('line', (line) => {
   let user_identity = 'user_identity=' + modifiedLine;
 
   const cnMatch = modifiedLine.match(/cn=([a-zA-Z0-9_-]+)/);
-  let cn = cnMatch ? cnMatch[1] : ''; // Extract the value of cn, or empty if not found
+  let cn = cnMatch ? cnMatch[1] : '';
 
   const processors = modifiedLine.match(/processor\s+(\w+)/g); 
   if (processors) {
     processors.forEach((processor) => {
-      const processorName = processor.split(' ')[1]; // Extract processor name
+      const processorName = processor.split(' ')[1]; 
       processorCount[processorName] = (processorCount[processorName] || 0) + 1;
     });
   }
