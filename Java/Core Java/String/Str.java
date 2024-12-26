@@ -1,6 +1,9 @@
+### Declare string with Literals.
+```
 public class Str {
     public static void main(String[] args){
         String name = "Hello World";
         System.out.println(name);
     }
 }
+```
