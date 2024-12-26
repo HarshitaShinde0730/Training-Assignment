@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-2.1.xsd">
+    <!-- CREATE PARTY-->
+    <service verb="create" noun="Party" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="all"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters include="pk" required="true"/>
+        </out-parameters>
+    </service>
+    <!-- UPDATE PARTY -->
+    <service verb="update" noun="Party" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="nonpk"/>
+            <parameter name="firstname"/>
+            <parameter name="lastname"/>
+        </in-parameters>
+    </service>
+    <!-- DELETE -->
+    <service verb="delete" noun="Party" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="pk" required="true"/>
+            <auto-parameters include="all"/>
+        </in-parameters>
+    </service>
+    <!-- ========================= -->
+    <!-- CREATE CONTACT_MECH-->
+    <service verb="create" noun="ContactMech" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="all"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters include="pk" required="true"/>
+        </out-parameters>
+    </service>
+    <!-- UPDATE CONTACT_MECH -->
+    <service verb="update" noun="ContactMech" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="nonpk"/>
+            <parameter name="streetAddress"/>
+            <parameter name="state"/>
+            <parameter name="city"/>
+            <parameter name="postalCode"/>
+        </in-parameters>
+    </service>
+    <!-- DELETE CONTACT_MECH -->
+    <service verb="delete" noun="ContactMech" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="pk" required="true"/>
+            <auto-parameters include="all"/>
+        </in-parameters>
+    </service>
+    <!-- PRODUCT -->
+    <service verb="create" noun="Product" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="all"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters include="pk" required="true"/>
+        </out-parameters>
+    </service>
+    <!-- UPDATE PRODUCT -->
+    <service verb="update" noun="Product" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="nonpk"/>
+            <parameter name="productName"/>
+            <parameter name="color"/>
+            <parameter name="size"/>
+        </in-parameters>
+    </service>
+    <!-- DELETE CONTACT_MECH -->
+    <service verb="delete" noun="Product" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="pk" required="true"/>
+            <auto-parameters include="all"/>
+        </in-parameters>
+    </service>
+    <!-- ORDER_HEADER-->
+    <service verb="create" noun="OrderHeader" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="all"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters include="pk" required="true"/>
+        </out-parameters>
+    </service>
+    <!-- UPDATE PRODUCT -->
+    <service verb="update" noun="OrderHeader" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="nonpk"/>
+            <parameter name="orderDate"/>
+        </in-parameters>
+    </service>
+    <!-- DELETE CONTACT_MECH -->
+    <service verb="delete" noun="OrderHeader" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="pk" required="true"/>
+            <auto-parameters include="all"/>
+        </in-parameters>
+    </service>
+    <!-- PRODUCT -->
+    <service verb="create" noun="OrderItem" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="all"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters include="pk" required="true"/>
+        </out-parameters>
+    </service>
+    <!-- UPDATE PRODUCT -->
+    <service verb="update" noun="OrderItem" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="nonpk"/>
+            <parameter name="quantity"/>
+            <parameter name="status"/>
+        </in-parameters>
+    </service>
+    <!-- DELETE CONTACT_MECH -->
+    <service verb="delete" noun="OrderItem" type="entity-auto">
+        <in-parameters>
+            <auto-parameters include="pk" required="true"/>
+            <auto-parameters include="all"/>
+        </in-parameters>
+    </service>
+</services>
