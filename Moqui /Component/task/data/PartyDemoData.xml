@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-facade-xml type="demo">
+    <task.Party partyid="1" partytype="customer" firstname="John" lastname="Doe"/>
+    <task.Party partyid="2" partytype="customer" firstname="Jane" lastname="Smith"/>
+    <task.Party partyid="3" partytype="customer" firstname="Mark" lastname="Doe"/>
+    <task.Party partyid="4" partytype="customer" firstname="Sam" lastname="Smith"/>
+    <task.Party partyid="5" partytype="customer" firstname="Rudh" lastname="Doe"/>
+    <task.Party partyid="6" partytype="customer" firstname="Sami" lastname="Smith"/>
+    <task.Party partyid="7" partytype="customer" firstname="Nuke" lastname="Doe"/>
+    <task.Party partyid="8" partytype="customer" firstname="Nike" lastname="Smith"/>
+    <task.Party partyid="9" partytype="customer" firstname="Bill" lastname="Doe"/>
+    <task.Party partyid="10" partytype="customer" firstname="Gill" lastname="Smith"/>
+</entity-facade-xml>
