@@ -18,7 +18,7 @@
             <parameter name="lastname"/>
         </in-parameters>
     </service>
-    <!-- DELETE -->
+    <!-- DELETE PARTY -->
     <service verb="delete" noun="Party" type="entity-auto">
         <in-parameters>
             <auto-parameters include="pk" required="true"/>
@@ -70,7 +70,7 @@
             <parameter name="size"/>
         </in-parameters>
     </service>
-    <!-- DELETE CONTACT_MECH -->
+    <!-- DELETE PRODUCT -->
     <service verb="delete" noun="Product" type="entity-auto">
         <in-parameters>
             <auto-parameters include="pk" required="true"/>
@@ -86,21 +86,21 @@
             <auto-parameters include="pk" required="true"/>
         </out-parameters>
     </service>
-    <!-- UPDATE PRODUCT -->
+    <!-- UPDATE ORDER_HEADER -->
     <service verb="update" noun="OrderHeader" type="entity-auto">
         <in-parameters>
             <auto-parameters include="nonpk"/>
             <parameter name="orderDate"/>
         </in-parameters>
     </service>
-    <!-- DELETE CONTACT_MECH -->
+    <!-- DELETE ORDER_HEADER -->
     <service verb="delete" noun="OrderHeader" type="entity-auto">
         <in-parameters>
             <auto-parameters include="pk" required="true"/>
             <auto-parameters include="all"/>
         </in-parameters>
     </service>
-    <!-- PRODUCT -->
+    <!-- ORDER_ITEM -->
     <service verb="create" noun="OrderItem" type="entity-auto">
         <in-parameters>
             <auto-parameters include="all"/>
@@ -109,7 +109,7 @@
             <auto-parameters include="pk" required="true"/>
         </out-parameters>
     </service>
-    <!-- UPDATE PRODUCT -->
+    <!-- UPDATE ORDER_ITEM -->
     <service verb="update" noun="OrderItem" type="entity-auto">
         <in-parameters>
             <auto-parameters include="nonpk"/>
@@ -117,7 +117,7 @@
             <parameter name="status"/>
         </in-parameters>
     </service>
-    <!-- DELETE CONTACT_MECH -->
+    <!-- DELETE ORDER_ITEM -->
     <service verb="delete" noun="OrderItem" type="entity-auto">
         <in-parameters>
             <auto-parameters include="pk" required="true"/>
