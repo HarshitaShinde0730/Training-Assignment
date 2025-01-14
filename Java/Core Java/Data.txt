@@ -1,0 +1,1 @@
+Writing inside the file using write function in Java.
