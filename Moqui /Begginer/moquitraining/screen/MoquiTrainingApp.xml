@@ -1,0 +1,8 @@
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.1.xsd"
+        require-authentication="false" default-menu-index="1"
+        menu-image="fa fa-fire" menu-image-type="icon">
+    <subscreens default-item="FindMoquiTraining"/>
+    <widgets>
+        <subscreens-active id="find-moquitraining"/>
+    </widgets>
+</screen>

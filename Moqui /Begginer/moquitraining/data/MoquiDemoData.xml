@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-facade-xml type="demo">
+    <moqui.MoquiTraining trainingId="0101" trainingName="test_training1" trainingDate="12/02/2025" trainingPrice="90.50$" trainingDuration="1:00"/>
+    <moqui.MoquiTraining trainingId="0102" trainingName="test_training2" trainingDate="12/02/2025" trainingPrice="90.50$" trainingDuration="1:00"/>
+    <moqui.MoquiTraining trainingId="0103" trainingName="test_training3" trainingDate="12/02/2025" trainingPrice="90.50$" trainingDuration="1:00"/>
+    <moqui.MoquiTraining trainingId="0104" trainingName="test_training4" trainingDate="12/02/2025" trainingPrice="90.50$" trainingDuration="1:00"/>
+    <moqui.MoquiTraining trainingId="0105" trainingName="test_training5" trainingDate="12/02/2025" trainingPrice="90.50$" trainingDuration="1:00"/>
+    <moqui.MoquiTraining trainingId="0106" trainingName="test_training6" trainingDate="12/02/2025" trainingPrice="90.50$" trainingDuration="1:00"/>
+    <moqui.MoquiTraining trainingId="0107" trainingName="test_training7" trainingDate="12/02/2025" trainingPrice="90.50$" trainingDuration="1:00"/>
+</entity-facade-xml>
