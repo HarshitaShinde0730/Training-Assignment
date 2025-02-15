@@ -1,28 +1,40 @@
-**Query:** Total number of shipments in January 2022 first quarter:
- - Determine the total count of shipments made during the first quarter of 2022, specifically in the month of January.
+**Query:**  Shipments by Tracking Number
+ - Business Problem:
+   Customer Service often needs to look up shipments by tracking number to answer delivery queries quickly.
    
-**Query cost**: 1396
+**Query cost**: 70731.55
 
 **Solution:** 
 ```sql
 select 
-     'January_shipment' as Shipment_Type,
-      count(*) as Shipment_Count
-from 
-      shipment s
+    s.ESTIMATED_SHIP_DATE as shipment_date,
+    s.SHIPMENT_ID,
+    os.ORDER_ID,
+    srs.TRACKING_ID_NUMBER as tracking_number,
+    csm.PARTY_ID  as carrier_party_id,
+    s.STATUS_ID 
+from
+    shipment s 
+join
+    shipment_route_segment srs 
+on
+    s.SHIPMENT_ID = srs.SHIPMENT_ID 
+join
+    order_shipment os 
+on 
+    s.SHIPMENT_ID = os.SHIPMENT_ID  
+join 
+    shipment_method_type smt 
+on
+    smt.SHIPMENT_METHOD_TYPE_ID = srs.SHIPMENT_METHOD_TYPE_ID
+join 
+    carrier_shipment_method csm 
+on 
+    csm.SHIPMENT_METHOD_TYPE_ID = smt.SHIPMENT_METHOD_TYPE_ID 
 where 
-      s.STATUS_ID = 'shipment_shipped'
-      and 
-      month(s.CREATED_DATE) = 1
-      and 
-      year(s.CREATED_DATE) = 2022
-union all
-select 
-      'Total_shipment' as Shipment_Type, 
-       count(*) as Shipment_Count
-from 
-      shipment s2
-where 
-      s2.STATUS_ID = 'shipment_shipped'
-      and 
-      date(s2.CREATED_DATE) between '2022-01-01' and '2022-03-31';
+    srs.TRACKING_ID_NUMBER is not null
+and 
+    s.ESTIMATED_SHIP_DATE is not null	
+
+
+	
