@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.1.xsd"
+        require-authentication="anonymous-all">
+    <transition name="FindMoquiTraining">
+        <service-call name="get#moqui.MoquiTraining"/>
+        <default-response url="."/>
+    </transition>
+    <widgets>
+        <container-dialog id="FindMoquiTrainingDialog" button-text="Find">
+            <form-single name="FindMoquiTrainingDialog" transition="FindMoquiTrainingDialog">
+                <auto-fields-entity entity-name="moqui.MoquiTraining" field-type="edit"/>
+                <field name ="submitButton">
+                    <default-field title="find"><submit/></default-field>
+                </field>
+            </form-single>
+        </container-dialog>
+        <actions>
+            <entity-find entity-name="moqui.MoquiTraining" list="MoquiTrainingList">
+                <search-form-inputs/>
+            </entity-find>
+        </actions>
+        <form-list name="MoquiTrainingList" list="MoquiTrainingList" transition="FindMoquiTraining">
+            <auto-fields-entity entity-name="moqui.MoquiTraining" field-type="display"/>
+        </form-list>
+    </widgets>
+</screen>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ecom">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Moqui /Component/ecom/build/libs/ecom.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

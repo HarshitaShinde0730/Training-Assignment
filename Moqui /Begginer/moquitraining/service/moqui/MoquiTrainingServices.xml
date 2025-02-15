@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-3.xsd">
+
+  <!-- ENTITY AUTO -->
+    <service verb="create" noun="MoquiTraining" type="entity-auto" authenticate="anonymous-all">
+        <in-parameters>
+            <parameter name="trainingId" required="true"/>
+            <auto-parameters include="nonpk"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="trainingId" required="true"/>
+        </out-parameters>
+    </service>
+   <!-- INLINE -->
+    <service verb="update" noun="MoquiTraining" authenticate="anonymous-all">
+        <in-parameters>
+            <parameter name="trainingId" required="true"/>
+            <auto-parameters include="nonpk"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters include="all"/>
+        </out-parameters>
+        <actions>
+            <if condition="!trainingId">
+                <return error="true" message="to update the moquitraining trainingId ${trainingId} require"/>
+            </if>
+            <if condition="trainingId">
+                <service-call name="update#moqui.MoquiTraining" in-map="context" out-map="context"/>
+                <return message="MoquiTraining updated successfully."/>
+            </if>
+        </actions>
+    </service>
+    <!-- INLINE-->
+    <service verb="delete" noun="MoquiTraining" authenticate="anonymous-all">
+        <description>Delete a MoquiTraining record by trainingId</description>
+
+        <in-parameters>
+            <parameter name="trainingId" required="true"/>
+        </in-parameters>
+        <actions>
+            <!-- Check if trainingId exists -->
+            <if condition="!trainingId">
+                <return error="true" message="TrainingId ${trainingId} does not exist. Cannot delete."/>
+            </if>
+
+            <!-- Perform delete -->
+            <service-call name="delete#moqui.MoquiTraining" in-map="context" out-map="context"/>
+
+            <return message="MoquiTraining with trainingId ${trainingId} deleted successfully."/>
+        </actions>
+    </service>
+    <service verb="get" noun="MoquiTraining">
+        <in-parameters>
+            <parameter name="trainingId" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters include="all"/>
+        </out-parameters>
+        <actions>
+                <script><![CDATA[
+                  logger.info("Fetching details for TrainingId: ${trainingId}")
+            def training = ec.entity.find("moqui.MoquiTraining")
+                .condition("trainingId", trainingId)
+                .one()
+
+            if (!training) {
+                 logger.warn("No record found for TrainingId: ${trainingId}")
+                ec.message.addError("TrainingId ${trainingId} does not exist.")
+                return
+            }
+
+             logger.info("Training data fetched: ${training}")
+
+            context.trainingData = training
+        ]]></script>
+    </actions>
+    </service>
+</services>
