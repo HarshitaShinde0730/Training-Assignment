@@ -1,28 +1,33 @@
-**Query:** Total number of shipments in January 2022 first quarter:
- - Determine the total count of shipments made during the first quarter of 2022, specifically in the month of January.
-   
-**Query cost**: 1396
+**Query:** Brokered but Not Shipped Orders
+ - Business Problem:
+   Merchandising teams need to track orders that have been brokered (allocated to a facility) but not shipped. They also want to know how long it has been since the order was brokered.
+ - **Fields to Retrieve:**
+   - ORDER_ID 
+   - BROKERED_DATE 
+   - BROKERED_FACILITY_ID 
+   - SHIPMENT_STATUS 
+   - TIME_SINCE_BROKERING
+
+**Query cost**: 40,356.58
 
 **Solution:** 
 ```sql
-select 
-     'January_shipment' as Shipment_Type,
-      count(*) as Shipment_Count
-from 
-      shipment s
-where 
-      s.STATUS_ID = 'shipment_shipped'
-      and 
-      month(s.CREATED_DATE) = 1
-      and 
-      year(s.CREATED_DATE) = 2022
-union all
-select 
-      'Total_shipment' as Shipment_Type, 
-       count(*) as Shipment_Count
-from 
-      shipment s2
-where 
-      s2.STATUS_ID = 'shipment_shipped'
-      and 
-      date(s2.CREATED_DATE) between '2022-01-01' and '2022-03-31';
+with unshipped as (
+    select shipment_id
+    from shipment
+    where status_id != 'shipment_shipped'
+)
+select
+    oisg.order_id,
+    oisg.created_stamp as brokered_date,
+    oisg.facility_id as brokered_facility_id,
+    s.status_id as shipment_status,
+    timestampdiff(day ,oisg.created_stamp, now()) as time_since_brokering
+from
+    order_item_ship_group oisg
+join
+    order_shipment os on oisg.order_id = os.order_id
+join
+    shipment s on os.shipment_id = s.shipment_id
+where
+    s.shipment_id in (select shipment_id from unshipped);

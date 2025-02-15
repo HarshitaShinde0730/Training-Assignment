@@ -1,28 +1,20 @@
-**Query:** Total number of shipments in January 2022 first quarter:
- - Determine the total count of shipments made during the first quarter of 2022, specifically in the month of January.
+**Query:**  Average Shipments per Month (Q1 2022)
+ - Business Problem:
+   Operations wants to find the average number of shipments from all stores for each month in Q1 2022 (January, February, March).
+   **Fields to Retrieve:**
+   - MONTH 
+   - AVERAGE_SHIPMENTS
    
-**Query cost**: 1396
+**Query cost**: 8844.71
 
 **Solution:** 
 ```sql
 select 
-     'January_shipment' as Shipment_Type,
-      count(*) as Shipment_Count
-from 
-      shipment s
+    month(s.created_date) as month,
+    avg(count(s.shipment_id)) over (partition by month(s.created_date)) as avg_shipments
+from
+    shipment s
 where 
-      s.STATUS_ID = 'shipment_shipped'
-      and 
-      month(s.CREATED_DATE) = 1
-      and 
-      year(s.CREATED_DATE) = 2022
-union all
-select 
-      'Total_shipment' as Shipment_Type, 
-       count(*) as Shipment_Count
-from 
-      shipment s2
-where 
-      s2.STATUS_ID = 'shipment_shipped'
-      and 
-      date(s2.CREATED_DATE) between '2022-01-01' and '2022-03-31';
+    s.created_date between '2022-01-01' and '2022-03-31'
+group by 
+    month(s.created_date);
