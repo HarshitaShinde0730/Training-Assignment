@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+
+<entitymodel xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://ofbiz.apache.org/dtds/entitymodel.xsd">
+    <!-- ========================================================= -->
+    <!-- ======================== Defaults ======================= -->
+    <!-- ========================================================= -->
+    <title>Entity of PartyDemo Component</title>
+    <description>None</description>
+    <copyright>Harshita</copyright>
+    <version>1.0</version>
+    <!-- Party Type -->
+    <entity entity-name="PartyDemoType" package-name="org.apache.ofbiz.partydemo" title="Party Demo Type Entity">
+        <field name="PartyDemoTypeId" type="id">
+            <description>primary sequenced ID</description>
+        </field>
+        <prim-key field="PartyDemoTypeId"/>
+    </entity>
+
+    <!-- PARTY -->
+    <entity entity-name="PartyDemo" package-name="org.apache.ofbiz.partydemo" title="Party Demo Entity">
+        <field name="PartyDemoId" type="id">
+            <description>Primary Sequenced ID</description>
+        </field>
+        <field name="PartyDemoTypeId" type="id"/>
+        <field name="firstName" type="name"/>
+        <field name="lastName" type="name"/>
+        <field name="comments" type="comment"/>
+        <prim-key field="PartyDemoId"/>
+        <relation type="one" rel-entity-name="PartyDemoType">
+            <key-map field-name="PartyDemoTypeId"/>
+        </relation>
+    </entity>
+    <!-- PARTY CARRIER ACCOUNT -->
+    <entity entity-name="PartyDemoCarrierAccount" package-name="org.apache.ofbiz.partydemo" title="Party Demo Carrier Account Entity">
+        <field name="PartyDemoId" type="id">
+            <description>Primary Sequenced ID</description>
+        </field>
+        <field name="PartyDemoCarrierAccountId" type="id"/>
+        <field name="from_date" type="date"/>
+        <field name="thru_date" type="date"/>
+        <field name="account_number" type="number"/>
+        <prim-key field="PartyDemoCarrierAccountId"/>
+        <prim-key field="from_date"/>
+        <relation type="many" rel-entity-name="PartyDemo">
+            <key-map field-name="PartyDemoId"/>
+        </relation>
+    </entity>
+    <!-- PARTY ROLE -->
+    <entity entity-name="PartyDemoRole" package-name="org.apache.ofbiz.partydemo" title="Party Demo Role Entity">
+        <field name="PartyDemoId" type="id">
+            <description>Primary Sequenced ID</description>
+        </field>
+        <field name="PartyDemoRoleTypeId" type="id"/>
+        <field name="frompartyrelationship" type="name"/>
+        <field name="thrupartyrelationship" type="name"/>
+        <prim-key field="PartyDemoRoleTypeId"/>
+        <relation type="many" rel-entity-name="PartyDemo">
+            <key-map field-name="PartyDemoId"/>
+        </relation>
+        <relation type="one-nofk" rel-entity-name="PartyDemoRoleType">
+            <key-map field-name="PartyDemoRoleTypeId"/>
+        </relation>
+    </entity>
+    <!-- PARTY ROLE TYPE -->
+    <entity entity-name="PartyDemoRoleType" package-name="org.apache.ofbiz.partydemo" title="Party Demo Role Type Entity">
+        <field name="PartyDemoRoleTypeId" type="id"/>
+        <prim-key field="PartyDemoRoleType"/>
+        <relation type="many" rel-entity-name="PartyDemoRole">
+            <key-map field-name="PartyDemoRoleTypeId"/>
+        </relation>
+    </entity>
+    <!-- PARTY PERSON -->
+    <entity entity-name="PartyDemoPerson" package-name="org.apache.ofbiz.partydemo" title="Party Demo Person Entity">
+        <field name="PartyDemoId" type="id">
+            <description>Primary Sequenced ID</description>
+        </field>
+        <field name="firstName" type="name"/>
+        <field name="lastName" type="name"/>
+        <field name="comments" type="comment"/>
+        <prim-key field="PartyDemoId"/>
+        <relation type="one" rel-entity-name="PartyDemo">
+            <key-map field-name="PartyDemoId"/>
+        </relation>
+    </entity>
+    <!-- PARTY GROUP -->
+    <entity entity-name="PartyDemoGroup" package-name="org.apache.ofbiz.partydemo" title="Party Demo Group Entity">
+        <field name="PartyDemoId" type="id">
+            <description>Primary Sequenced ID</description>
+        </field>
+        <field name="GroupName" type="name"/>
+        <field name="GroupNameLocal" type="name"/>
+        <field name="comments" type="comment"/>
+        <prim-key field="PartyDemoId"/>
+        <relation type="one" rel-entity-name="PartyDemo">
+            <key-map field-name="PartyDemoId"/>
+        </relation>
+    </entity>
+    <!-- PARTY VENDOR -->
+    <entity entity-name="PartyDemoVendor" package-name="org.apache.ofbiz.partydemo" title="Party Demo Vendor Entity">
+        <field name="PartyDemoId" type="id">
+            <description>Primary Sequenced ID</description>
+        </field>
+        <field name="VendorName" type="name"/>
+        <field name="Vendor Company NameLocal" type="name"/>
+        <field name="comments" type="comment"/>
+        <prim-key field="PartyDemoId"/>
+        <relation type="one" rel-entity-name="PartyDemo">
+            <key-map field-name="PartyDemoId"/>
+        </relation>
+    </entity>
+    <!-- PARTY CONTACT MECH -->
+    <entity entity-name="PartyDemoPartyContactMech" package-name="org.apache.ofbiz.partydemo" title="Party Demo Party Contact Mech Entity">
+        <field name="PartyDemoId" type="id">
+            <description>Primary Sequenced ID</description>
+        </field>
+        <field name="PartyDemoContactMechId" type="id"/>
+        <field name="from_date" type="date"/>
+        <field name="thru_date" type="date"/>
+        <prim-key field="PartyDemoContactMechId"/>
+        <prim-key field="from_date"/>
+        <relation type="many" rel-entity-name="PartyDemo">
+            <key-map field-name="PartyDemoId"/>
+        </relation>
+        <relation type="one-nofk" rel-entity-name="PartyContactMech">
+            <key-map field-name="PartyDemoContactMechId"/>
+        </relation>
+    </entity>
+    <!-- CONTACT MECH -->
+    <entity entity-name="PartyDemoContactMech" package-name="org.apache.ofbiz.partydemo" title="Party Demo Contact Mech Entity">
+        <field name="PartyDemoContactMechId" type="id">
+            <description>Primary Sequenced ID</description>
+        </field>
+        <field name="info_string" type="string"/>
+        <prim-key field="PartyDemoContactMechId"/>
+        <relation type="one" rel-entity-name="PartyDemoPartyContactMech">
+            <key-map field-name="PartyContactMechID"/>
+        </relation>
+    </entity>
+    <!-- POSTAL ADDRESS -->
+    <entity entity-name="PartyDemoPostalAddress" package-name="org.apache.ofbiz.partydemo" title="Party Demo Postal Address Entity">
+        <field name="PartyDemoContactMechId" type="id">
+            <description>Primary Sequenced ID</description>
+        </field>
+        <field name="to_name" type="name"/>
+        <field name="Address1" type="address"/>
+        <field name="Address2" type="address"/>
+        <prim-key field="PartyDemoContactMechId"/>
+        <relation type="one" rel-entity-name="PartyDemoContactMech">
+            <key-map field-name="PartyContactMechID"/>
+        </relation>
+    </entity>
+</entitymodel>
