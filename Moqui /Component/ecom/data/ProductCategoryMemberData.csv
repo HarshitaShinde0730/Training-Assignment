@@ -1,0 +1,4 @@
+productinfo.productcategorymember.ProductCategoryMember, demo
+
+productId, productCategoryId, fromDate
+PROD10000, BROWSE_ROOT, 2023-01-01

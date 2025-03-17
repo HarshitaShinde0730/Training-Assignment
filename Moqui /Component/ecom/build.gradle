@@ -1,0 +1,34 @@
+apply plugin: 'groovy'
+
+//sourceCompatibility = '1.8'
+//targetCompatibility = '1.8'
+
+def moquiDir = projectDir.parentFile.parentFile.parentFile
+def frameworkDir = file(moquiDir.absolutePath + '/framework')
+
+repositories {
+    flatDir name: 'localLib', dirs: frameworkDir.absolutePath + '/lib'
+    mavenCentral()
+}
+
+// Log4J has annotation processors, disable to avoid warning
+tasks.withType(JavaCompile) { options.compilerArgs << "-proc:none" }
+tasks.withType(GroovyCompile) { options.compilerArgs << "-proc:none" }
+
+dependencies {
+    implementation 'mysql:mysql-connector-java:5.1.47'
+}
+
+// by default the Java plugin runs test on build, change to not do that (only run test if explicit task)
+// no longer workds as of gradle 4.8 or possibly earlier, use clear() instead: check.dependsOn.remove(test)
+check.dependsOn.clear()
+
+task cleanLib(type: Delete) { delete fileTree(dir: projectDir.absolutePath+'/lib', include: '*') }
+clean.dependsOn cleanLib
+
+task copyDependencies { doLast {
+    copy { from (configurations.runtimeClasspath - project(':framework').configurations.runtimeClasspath - project(':framework').jar.archivePath)
+        into file(projectDir.absolutePath + '/lib') }
+} }
+copyDependencies.dependsOn cleanLib
+jar.dependsOn copyDependencies

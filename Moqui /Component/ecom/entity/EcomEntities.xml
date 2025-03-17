@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/entity-definition-3.xsd">
+    <entity entity-name="Party" package="ecom">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="partyTypeEnumId" type="id"/>
+        <field name="statusId" type="id"/>
+        <field name="roleTypeId" type="id-long" is-pk="true"/>
+        <field name="createDate" type="date-time"/>
+        <relationship type="one" title="PartyType" related="moqui.basic.Enumeration" short-alias="type">
+            <key-map field-name="partyTypeEnumId"/>
+        </relationship>
+        <relationship type="one" title="StatusId" related="moqui.basic.StatusItem">
+            <key-map field-name="statusId" related="statusId"/>
+        </relationship>
+        <relationship type="one-nofk" related="ecom.Organization"/>
+        <relationship type="one-nofk" related="ecom.Person"/>
+        <relationship type="one-nofk" related="ecom.ContactMech"/>
+        <master>
+            <detail relationship="type"/>
+            <detail relationship="Person"/>
+            <detail relationship="Organization"/>
+        </master>
+    </entity>
+    <entity entity-name="Person" package="ecom">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="firstName" type="text-medium"/>
+        <field name="lastName" type="text-medium"/>
+        <relationship type="one" related="ecom.Party"/>
+    </entity>
+    <entity entity-name="Organization" package="ecom">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="organizationName" type="text-medium"/>
+        <relationship type="one" related="ecom.Party"/>
+    </entity>
+    <entity entity-name="ContactMech" package="ecom">
+        <field name="contactMechId" type="id-long" is-pk="true"/>
+        <field name="partyId" type="id-long"/>
+        <field name="contactMechTypeEnumId" type="text-long" not-null="true"/>
+        <field name="contactMechPurposeId" type="id" is-pk="true"/>
+        <relationship type="one-nofk" related="Party">
+            <key-map field-name="partyId" related="partyId"/>
+        </relationship>
+        <relationship type="one" related="ecom.TelecomNumber">
+            <key-map field-name="contactMechId"/>
+        </relationship>
+        <relationship type="one" related="ecom.PostalAddress">
+            <key-map field-name="contactMechId"/>
+        </relationship>
+    </entity>
+    <entity entity-name="TelecomNumber" package="ecom">
+        <field name="contactMechId" type="id-long" is-pk="true"/>
+        <field name="countryCode" type="number-decimal" />
+        <field name="areaCode" type="number-decimal"/>
+        <field name="contactNumber" type="number-decimal"/>
+        <relationship type="one" related="ecom.ContactMech"/>
+    </entity>
+    <entity entity-name="PostalAddress" package="ecom">
+        <field name="contactMechId" type="id-long" is-pk="true"/>
+        <field name="toName" type="text-very-long"/>
+        <field name="attnName" type="text-medium"/>
+        <field name="address1" type="text-very-long"/>
+        <field name="address2" type="text-very-long"/>
+        <field name="city" type="text-medium"/>
+        <field name="postalCode" type="number-integer"/>
+        <relationship type="one" related="ecom.ContactMech"/>
+    </entity>
+    <entity entity-name="ContactMechPurpose" package="ecom">
+    <field name="contactMechId" type="text-medium" is-pk="true"/>
+    <field name="contactMechPurposeId" type="id" is-pk="true"/>
+    <field name="description" type="text-very-long"/>
+    <relationship type="one" title="ContactMechPurpose" related="ecom.ContactMech">
+        <key-map field-name="contactMechPurposeId"/>
+    </relationship>
+    </entity>
+    <entity entity-name="Product" package="ecom">
+        <field name="productId" type="id" is-pk="true"/>
+        <field name="productTypeEnumId" type="id"/>
+        <field name="productName" type="text-medium"/>
+        <field name="isVirtual" type="text-short"/>
+        <field name="isVarient" type="text-short"/>
+        <field name="fromDate" type="date"/>
+        <field name="thruDate" type="date"/>
+        <relationship type="one" related="moqui.basic.Enumeration">
+            <key-map field-name="productTypeEnumId"/>
+        </relationship>
+    </entity>
+    <entity entity-name="ProductContent" package="ecom">
+        <field name="productContentId" type="id" is-pk="true"/>
+        <field name="productId" type="id" not-null="true"/>
+        <field name="productContentTypeEnumId" type="id"/>
+        <field name="contentLocation" type="text-medium"/>
+        <relationship type="one" related="moqui.basic.Enumeration" title="ContentType">
+            <key-map field-name="productContentTypeEnumId"/>
+        </relationship>
+        <relationship type="one" related="ecom.Product">
+            <key-map field-name="productId"/>
+        </relationship>
+    </entity>
+    <entity entity-name="ProductPrice" package="ecom">
+        <field name="productId" type="id" not-null="true"/>
+        <field name="productPriceId" type="id" is-pk="true"/>
+        <field name="priceTypeEnumId" type="id"/>
+        <field name="productName" type="text-medium"/>
+        <field name="price" type="number-decimal"/>
+
+        <relationship type="one" related="moqui.basic.Enumeration">
+            <key-map field-name="priceTypeEnumId"/>
+        </relationship>
+        <relationship type="one" related="ecom.Product">
+            <key-map field-name="productId"/>
+        </relationship>
+    </entity>
+    <entity entity-name="ProductFeature" package="ecom">
+        <field name="productFeatureId" type="id" is-pk="true"/>
+        <field name="productFeatureTypeEnumId" type="id"/>
+
+        <relationship type="one" related="moqui.basic.Enumeration" title="FeatureType">
+            <key-map field-name="productFeatureTypeEnumId"/>
+        </relationship>
+        <relationship type="many" related="ecom.ProductFeatureAppl">
+            <key-map field-name="productFeatureId"/>
+        </relationship>
+    </entity>
+    <entity entity-name="ProductFeatureAppl" package="ecom">
+        <field name="productId" type="id" is-pk="true"/>
+        <field name="productFeatureId" type="id" is-pk="true"/>
+        <field name="fromDate" type="date" is-pk="true"/>
+        <field name="applTypeEnumId" type="id"/>
+        <field name="thruDate" type="date"/>
+
+        <relationship type="one" related="ecom.Product">
+            <key-map field-name="productId"/>
+        </relationship>
+        <relationship type="one" related="ecom.ProductFeature">
+            <key-map field-name="productFeatureId"/>
+        </relationship>
+        <relationship type="one" related="moqui.basic.Enumeration" title="ApplyType">
+            <key-map field-name="applTypeEnumId"/>
+        </relationship>
+    </entity>
+
+    <entity entity-name="ProductCategory" package="ecom">
+        <field name="productCategoryId" type="id" is-pk="true"/>
+        <field name="productCategoryTypeEnumId" type="id"/>
+        <field name="categoryName" type="text-medium"/>
+
+        <relationship type="one" related="moqui.basic.Enumeration" title="CategoryType">
+            <key-map field-name="productCategoryTypeEnumId"/>
+        </relationship>
+        <relationship type="many" related="ecom.ProductCategoryMember"
+                      short-alias="member"/>
+    </entity>
+
+    <entity entity-name="ProductCategoryMember" package="ecom">
+        <field name="productId" type="id" is-pk="true"/>
+        <field name="productCategoryId" type="id" is-pk="true"/>
+        <field name="fromDate" type="date" is-pk="true"/>
+        <field name="thruDate" type="date"/>
+
+        <relationship type="one" related="ecom.Product"/>
+        <relationship type="one" related="ecom.ProductCategory"/>
+    </entity>
+</entities>

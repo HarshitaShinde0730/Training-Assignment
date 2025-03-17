@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchema="http://moqui.org/xml-screen-3.xsd" require-authentication="anonymous-all">
+    <actions>
+        <service-call name="ecom.EcomServices.fetch#Product" in-map="[productId:productId]" out-map="context"/>
+    </actions>
+    <transition name="createProduct">
+        <service-call name="create#ecom.Product"/>
+        <default-response type="none"/>
+    </transition>
+    <transition name="updateProduct">
+        <service-call name="update#ecom.Product"/>
+        <default-response type="none"/>
+    </transition>
+
+    <transition name="deleteProduct">
+        <service-call name="delete#ecom.Product"/>
+        <default-response type="none"/>
+    </transition>
+    <widgets>
+        <container-box>
+            <box-header title="Create Product"/>
+            <box-body>
+                <form-single name="CreateProduct" transition="createProduct">
+                    <field name="productId">
+                        <default-field>
+                            <text-line size="15"/>
+                        </default-field>
+                    </field>
+                    <field name="productTypeEnumId">
+                        <default-field>
+                            <drop-down allow-empty="true" style="">
+                                <entity-options text="${description ?: ''} [${enumId}]">
+                                    <entity-find entity-name="moqui.basic.Enumeration">
+                                        <econdition field-name="enumTypeId" value="ProductType"/>
+                                        <order-by field-name="description"/>
+                                    </entity-find>
+                                </entity-options>
+                            </drop-down>
+                        </default-field>
+                    </field>
+                    <field name="productName">
+                        <default-field>
+                            <text-line size="15"/>
+                        </default-field>
+                    </field>
+                    <field name="isVarient">
+                        <default-field>
+                            <radio>
+                                <list-options list="['Y', 'N']"/>
+                            </radio>
+                        </default-field>
+                    </field>
+                    <field name="isVirtual">
+                        <default-field>
+                            <radio>
+                                <list-options list="['Y', 'N']"/>
+                            </radio>
+                        </default-field>
+                    </field>
+                    <field name="fromDate">
+                        <default-field>
+                            <text-line/>
+                        </default-field>
+                    </field>
+                    <field name="thruDate">
+                        <default-field>
+                            <text-line/>
+                        </default-field>
+                    </field>
+                    <field name="createProductButton">
+                        <default-field title="Create Product">
+                            <submit/>
+                        </default-field>
+                    </field>
+                </form-single>
+            </box-body>
+        </container-box>
+        <container-box>
+            <box-header title="Enter Product Id: ${productId}"/>
+            <box-body-nopad>
+                <form-single name="GetProduct" transition=".">
+                    <field name="productId">
+                        <default-field><text-line/></default-field>
+                    </field>
+                    <field name="getProduct">
+                        <default-field>
+                            <submit/>
+                        </default-field>
+                    </field>
+                </form-single>
+            </box-body-nopad>
+        </container-box>
+        <container-box>
+            <box-header title="Product Details"/>
+            <box-body-nopad>
+                <form-list name="ProductList" list="productList">
+                    <field name="productId">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="productName">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="productTypeEnumId">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="isVarient">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="isVirtual">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="fromDate">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="thruDate">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                </form-list>
+            </box-body-nopad>
+        </container-box>
+
+        <container-box>
+            <box-header title="Update Product"/>
+            <box-body-nopad>
+                <form-list name="UpdateForm" list="productList" transition="updateProduct">
+                    <field name="productId">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="productName">
+                        <default-field>
+                            <text-line/>
+                        </default-field>
+                    </field>
+                    <field name="productTypeEnumId">
+                        <default-field>
+                            <drop-down allow-empty="true" style="">
+                                <entity-options text="${description ?: ''} [${enumId}]">
+                                    <entity-find entity-name="moqui.basic.Enumeration">
+                                        <econdition field-name="enumTypeId" value="ProductType"/>
+                                        <order-by field-name="description"/>
+                                    </entity-find>
+                                </entity-options>
+                            </drop-down>
+                        </default-field>
+                    </field>
+                    <field name="isVarient">
+                        <default-field>
+                            <text-line/>
+                        </default-field>
+                    </field>
+                    <field name="isVirtual">
+                        <default-field>
+                            <text-line/>
+                        </default-field>
+                    </field>
+                    <field name="fromDate">
+                        <default-field>
+                            <text-line/>
+                        </default-field>
+                    </field>
+                    <field name="thruDate">
+                        <default-field>
+                            <text-line/>
+                        </default-field>
+                    </field>
+                    <field name="updateButton">
+                        <default-field>
+                            <submit/>
+                        </default-field>
+                    </field>
+                </form-list>
+            </box-body-nopad>
+        </container-box>
+
+
+        <container-box>
+            <box-header title="Delete Product"/>
+            <box-body-nopad>
+                <form-list name="DeleteForm" list="productList" transition="deleteProduct">
+                    <field name="productId">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="productName">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="productTypeEnumId">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="isVarient">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="isVirtual">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="fromDate">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="thruDate">
+                        <default-field>
+                            <display/>
+                        </default-field>
+                    </field>
+                    <field name="deleteButton">
+                        <default-field>
+                            <submit/>
+                        </default-field>
+                    </field>
+                </form-list>
+            </box-body-nopad>
+        </container-box>
+    </widgets>
+</screen>

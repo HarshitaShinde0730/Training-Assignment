@@ -1,0 +1,4 @@
+productinfo.productcategory.ProductCategory, demo
+
+productCategoryId, productCategoryTypeEnumId, categoryName
+BROWSE_ROOT, CATALOG_CATEGORY, Browse Root

@@ -1,0 +1,23 @@
+# Name of the entity and type
+productinfo.product.Product, demo
+# Demo data
+productId,productName,productTypeEnumId,isVirtual,isVarient,fromDate
+PROD10000,Smartphone,FINISHED_GOOD,Y,N,
+PROD10001,Smartphone-128GB,FINISHED_GOOD,N,Y,
+PROD10002,Smartphone-256GB,FINISHED_GOOD,N,Y,
+PROD20000,Laptop,FINISHED_GOOD,Y,N,2023-09-01
+PROD20001,Laptop-BLACK,FINISHED_GOOD,N,Y,
+PROM001,Laptop-Phone-Promotional-Package,FINISHED_GOOD,,,
+PROD30000,Tablet,FINISHED_GOOD,Y,N,
+PROD30001,Tablet-64GB,FINISHED_GOOD,N,Y,
+PROD30002,Tablet-128GB,FINISHED_GOOD,N,Y,
+PROD40000,Smartwatch,FINISHED_GOOD,Y,N,2023-08-15
+PROD40001,Smartwatch-Silver,FINISHED_GOOD,N,Y,
+PROD40002,Smartwatch-Black,FINISHED_GOOD,N,Y,
+PROD50000,Wireless Earbuds,FINISHED_GOOD,Y,N,
+PROD50001,Wireless Earbuds-White,FINISHED_GOOD,N,Y,
+PROD50002,Wireless Earbuds-Black,FINISHED_GOOD,N,Y,
+PROD60000,Gaming Console,FINISHED_GOOD,Y,N,
+PROD60001,Gaming Console-512GB,FINISHED_GOOD,N,Y,
+PROD60002,Gaming Console-1TB,FINISHED_GOOD,N,Y,
+PROM002,Smartwatch-Earbuds-Promotional-Package,FINISHED_GOOD,,,

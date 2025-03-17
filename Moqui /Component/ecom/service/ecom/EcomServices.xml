@@ -1,0 +1,149 @@
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/service-definition-2.1.xsd">
+  <!-- Party -->
+   <!-- Create -->
+    <service verb="create" noun="Party" type="entity-auto">
+        <in-parameters>
+            <auto-parameters entity-name="ecom.Party" include="all"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters entity-name="ecom.Party"/>
+        </out-parameters>
+    </service>
+    <!-- Party -->
+    <service verb="update" noun="Party">
+        <in-parameters>
+            <parameter name="roleTypeId"/>
+            <parameter name="createDate"/>
+            <auto-parameters entity-name="ecom.Party" include="all"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters entity-name="ecom.Party" include="all"/>
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="ecom.Party" list="partyList">
+                <econdition field-name="partyId" from="partyId"/>
+            </entity-find>
+            <if condition="partyList.isEmpty()">
+                <set field="errorMessage" value="Error: Party with ID [${partyId}] does not exist."/>
+                <return/>
+            </if>
+            <then>
+                <service-call name="update#ecom.Party" in-map="context" out-map="context"/>
+            </then>
+        </actions>
+    </service>
+    <!-- Create person -->
+    <service verb="create" noun="Person">
+        <in-parameters>
+            <parameter name="firstName"/>
+            <parameter name="lastName"/>
+            <auto-parameters entity-name="ecom.Party" include="nonpk"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters entity-name="ecom.Person" include="all"/>
+        </out-parameters>
+        <actions>
+            <service-call name="create#ecom.Party" in-map="context + [partyTypeEnumId:'Person']" out-map="context"/>
+            <service-call name="create#ecom.Person" in-map="context" out-map="context"/>
+        </actions>
+    </service>
+    <!-- Create Organization -->
+    <service verb="create" noun="Organization">
+        <in-parameters>
+            <parameter name="organizationName"/>
+            <auto-parameters entity-name="ecom.Party" include="nonpk"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters entity-name="ecom.Organization" include="all"/>
+        </out-parameters>
+        <actions>
+            <service-call name="create#ecom.Party" in-map="context + [partyTypeEnumId:'Organization']" out-map="context"/>
+            <service-call name="create#ecom.Organization" in-map="context" out-map="context"/>
+        </actions>
+    </service>
+    <!-- create Party Contact Mech -->
+    <service verb="create" noun="ContactMech">
+        <in-parameters>
+            <auto-parameters entity-name="ecom.ContactMech" include="all"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters entity-name="ecom.ContactMech" include="all"/>
+        </out-parameters>
+        <actions>
+            <service-call name="create#ecom.Party" in-map="context + [partyId: partyId]" out-map="context"/>
+            <service-call name="create#ecom.ContactMech" in-map="context" out-map="context"/>
+        </actions>
+    </service>
+    <service verb="create" noun="TelecomNumber">
+        <in-parameters>
+            <auto-parameters entity-name="ecom.TelecomNumber" include="all"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="partyId" entity-name="ecom.TelecomNumber"/>
+        </out-parameters>
+        <actions>
+            <service-call name="create#ecom.ContactMech" in-map="context + [partyTypeEnumId:'TelecomNumber']" out-map="context"/>
+            <service-call name="create#ecom.TelecomNumber" in-map="context" out-map="context"/>
+        </actions>
+    </service>
+    <service verb="create" noun="PostalAddress">
+        <in-parameters>
+            <auto-parameters entity-name="ecom.PostalAddress" include="all"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="partyId" entity-name="ecom.PostalAddress"/>
+        </out-parameters>
+        <actions>
+            <service-call name="create#ecom.ContactMech" in-map="context + [partyTypeEnumId:'PostalAddress']" out-map="context"/>
+            <service-call name="create#ecom.PostalAddress" in-map="context" out-map="context"/>
+        </actions>
+    </service>
+    <service verb="create" noun="ContactMechPurpose">
+        <in-parameters>
+            <auto-parameters entity-name="ecom.ContactMechPurpose" include="all"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters entity-name="ecom.ContactMechPurpose"/>
+        </out-parameters>
+        <actions>
+            <service-call name="create#ecom.ContactMech" in-map="context + [contactMechId: contactMechId]" out-map="context"/>
+            <service-call name="create#ecom.ContactMechPurpose" in-map="context" out-map="context"/>
+        </actions>
+    </service>
+    <service verb="get" noun="Party">
+        <in-parameters>
+            <parameter name="partyId" required="true"/>
+            <parameter name="partyTypeEnumId"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="partyList"/>
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="ecom.Party" list="partyList">
+                <econdition field-name="partyId"/>
+            </entity-find>
+        </actions>
+    </service>
+    <service verb="create" noun="Product">
+        <in-parameters>
+            <auto-parameters entity-name="ecom.Product" include="all"/>
+        </in-parameters>
+        <out-parameters>
+            <auto-parameters entity-name="ecom.Product" include="all"/>
+        </out-parameters>
+    </service>
+    <service verb="fetch" noun="Product">
+        <in-parameters>
+            <parameter name="productId" entity-name="ecom.Product"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="productList" type="List"/>
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="ecom.Product" list="productList">
+                <econdition field-name="productId"/>
+            </entity-find>
+        </actions>
+    </service>
+</services>

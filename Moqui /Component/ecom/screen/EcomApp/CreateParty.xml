@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.1.xsd"
+   require-authentication="anonymous-all">
+    <transition name="createParty">
+        <service-call name="create#ecom.Party"/>
+        <default-response url="."/>
+    </transition>
+    <widgets>
+    <container-dialog id="createPartyDialog" button-text="Create">
+        <form-single name="CreateParty" transition="createParty">
+            <auto-fields-entity entity-name="ecom.Party" field-type="edit"/>
+            <field name ="submitButton">
+                <default-field title="create"><submit/></default-field>
+            </field>
+        </form-single>
+    </container-dialog>
+    <actions>
+        <entity-find entity-name="ecom.Party" list="partyList">
+            <search-form-inputs/>
+        </entity-find>
+    </actions>
+         <form-list name="PartyList" list="partyList" transition="CreateParty">
+             <auto-fields-entity entity-name="ecom.Party" field-type="display"/>
+         </form-list>
+     </widgets>
+</screen>

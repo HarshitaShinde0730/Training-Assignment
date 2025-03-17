@@ -1,0 +1,10 @@
+productinfo.productprice.ProductPrice, demo
+
+productId, productPriceId, priceTypeEnumId, productName, price
+PROD10001, PRC_PHN1, LIST_PRICE, , 799.99
+PROD10002, PRC_PHN2, LIST_PRICE, , 1099.99
+PROD10002, PRC_PHN1_PROM1, PROMOTIONAL_PRICE, , 999.99
+PROD20000, PRC_LPT1, LIST_PRICE, , 1299.99
+PROM001, PRC_PHN_LPT_PROM1, PROMOTIONAL_PRICE, Laptop-Phone-Promotional-Package, 1999.99
+
+

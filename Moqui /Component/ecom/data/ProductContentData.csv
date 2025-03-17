@@ -1,0 +1,12 @@
+# Name of the entity and type
+productinfo.productcontent.ProductContent, demo
+# Demo data
+productContentId,productId,productContentTypeEnumId,contentLocation
+CON100,PROD10000,IMAGE,/images/smartphone.jpg
+CON200,PROD10000,DESCRIPTION,/descriptions/smartphone_en.txt
+CON300,PROD20000,IMAGE,/images/laptop.jpg
+CON400,PROD20000,DESCRIPTION,/descriptions/laptop_en.txt
+CON500,PROD30000,IMAGE,/images/tablet.jpg
+CON600,PROD30000,DESCRIPTION,/specs/tablet_description.pdf
+CON700,PROD40000,IMAGE,/images/headphones_review.png
+CON800,PROD40000,DESCRIPTION,/descriptions/headphones_en.txt

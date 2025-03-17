@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="http://moqui.org/xsd/xml-screen-2.1.xsd"
+        require-authentication="false"
+      default-menu-index="1" menu-image="fa fa-moon-o" menu-image-type="icon">
+    <subscreens default-item="CreateParty"/>
+    <widgets>
+        <subscreens-active id="create-party"/>
+    </widgets>
+</screen>

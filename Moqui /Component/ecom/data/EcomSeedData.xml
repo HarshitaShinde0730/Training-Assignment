@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-facade-xml type="seed">
+  <moqui.basic.EnumerationType description="Party Type" enumTypeId="partyType"/>
+  <moqui.basic.Enumeration description="Person" enumId="Person" enumTypeId="partyType"/>
+  <moqui.basic.Enumeration description="Organization" enumId="Organization" enumTypeId="partyType"/>
+
+  <moqui.basic.EnumerationType description="ContactMech Type" enumTypeId="contactMechType"/>
+  <moqui.basic.Enumeration description="TelecomNumber" enumId="TelecomNumber" enumTypeId="contactMechType"/>
+  <moqui.basic.Enumeration description="postal Address" enumId="PostalAddress" enumTypeId="contactMechTypeId"/>
+
+  <moqui.basic.EnumerationType description="Product Type" enumTypeId="ProductType"/>
+  <moqui.basic.Enumeration description="Good" enumId="GOOD" enumTypeId="ProductType"/>
+  <moqui.basic.Enumeration description="Finish Good" enumId="FINISH_GOOD" enumTypeId="ProductType"/>
+  <moqui.basic.Enumeration description="Kit Product" enumId="KIT_PRODUCT" enumTypeId="ProductType"/>
+
+  <moqui.basic.EnumerationType description="Content Type" enumTypeId="ContentType"/>
+  <moqui.basic.Enumeration description="DESCRIPTION" enumId="DESCRIPTION" enumTypeId="ContentType"/>
+  <moqui.basic.Enumeration description="IMAGE" enumId="IMAGE" enumTypeId="ContentType"/>
+
+  <moqui.basic.EnumerationType description="Price Type" enumTypeId="PriceType"/>
+  <moqui.basic.Enumeration description="List Price" enumId="LIST_PRICE" enumTypeId="PriceType"/>
+  <moqui.basic.Enumeration description="Promotional Price" enumId="PROMOTIONAL_PRICE" enumTypeId="PriceType"/>
+
+  <moqui.basic.EnumerationType description="Feature Type" enumTypeId="FeatureType"/>
+  <moqui.basic.Enumeration description="Memory" enumId="MEMORY" enumTypeId="FeatureType"/>
+  <moqui.basic.Enumeration description="Color" enumId="COLOR" enumTypeId="FeatureType"/>
+
+  <moqui.basic.EnumerationType description="Apply Type" enumTypeId="ApplyType"/>
+  <moqui.basic.Enumeration description="Distinguishing Feature" enumId="DISTINGUISHING_FEAT"
+                           enumTypeId="ApplyType"/>
+  <moqui.basic.Enumeration description="Optional Feature" enumId="OPTIONAL_FEATURE"
+                           enumTypeId="ApplyType"/>
+  <moqui.basic.Enumeration description="Required Feature" enumId="REQUIRED_FEATURE"
+                           enumTypeId="ApplyType"/>
+  <moqui.basic.Enumeration description="Selectable Feature" enumId="SELECTABLE_FEATURE"
+                           enumTypeId="ApplyType"/>
+  <moqui.basic.Enumeration description="Standard Feature" enumId="STANDARD_FEATURE"
+                           enumTypeId="ApplyType"/>
+
+  <moqui.basic.EnumerationType description="Category Type" enumTypeId="CategoryType"/>
+  <moqui.basic.Enumeration description="Catalog Category" enumId="CATALOG_CATEGORY" enumTypeId="CategoryType"/>
+  <moqui.basic.StatusType statusTypeId="statusId" description="Party Status"/>
+  <moqui.basic.StatusItem statusId="active" statusTypeId="statusId" description="active" sequenceNum="1"/>
+  <moqui.basic.StatusItem statusId="deactive" statusTypeId="statusId" description="deactive" sequenceNum="2"/>
+
+  <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="active" toStatusId="deactive" transitionName="Begin"/>
+  <moqui.basic.StatusFlowTransition statusFlowId="Default" statusId="deactive" toStatusId="active" transitionName="Resolved"/>
+
+</entity-facade-xml>

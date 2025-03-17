@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchema="http://moqui.org/xml-screen-3.xsd" require-authentication="anonymous-all">
+
+    <subscreens default-item="FindProduct"/>
+    <widgets>
+        <subscreens-active id="find-product"/>
+    </widgets>
+</screen>
