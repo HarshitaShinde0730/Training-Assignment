@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity-facade-xml type="demo">
+    <customer.partycontactmech.PartyContactMech partyId="PER123" contactMechId="10000"
+                                                contactMechPurposeId="WORK"
+                                                fromDate="2010-01-01" thruDate="2025-01-15"/>
+    <customer.partycontactmech.PartyContactMech partyId="PER123" contactMechId="10001"
+                                                contactMechPurposeId="EmailPrimary"
+                                                fromDate="2010-01-01" thruDate="2025-02-11"/>
+    <customer.partycontactmech.PartyContactMech partyId="PER005" contactMechId="10002"
+                                                contactMechPurposeId="OFFICE"
+                                                fromDate="2010-01-01" thruDate="2025-01-16"/>
+    <customer.partycontactmech.PartyContactMech partyId="PER006" contactMechId="10003" contactMechPurposeId="HOME"
+                                                fromDate="2011-04-03" thruDate="2025-02-11"/>
+    <customer.partycontactmech.PartyContactMech partyId="PER007" contactMechId="10004"
+                                                contactMechPurposeId="EmailPrimary"
+                                                fromDate="2011-04-01" thruDate="2025-01-15"/>
+    <customer.partycontactmech.PartyContactMech partyId="PER008" contactMechId="10005"
+                                                contactMechPurposeId="OFFICE"
+                                                fromDate="2010-03-01" thruDate="2025-02-11"/>
+    <customer.partycontactmech.PartyContactMech partyId="PER005" contactMechId="10006" contactMechPurposeId="HOME"
+                                                fromDate="2010-04-07" thruDate="2025-01-17"/>
+    <customer.partycontactmech.PartyContactMech partyId="ORG456" contactMechId="10007"
+                                                contactMechPurposeId="OFFICE"
+                                                fromDate="2010-07-01" thruDate="2025-02-15"/>
+    <customer.partycontactmech.PartyContactMech partyId="ORG001" contactMechId="10008"
+                                                contactMechPurposeId="HOME"
+                                                fromDate="2011-11-01" thruDate="2025-01-20"/>
+    <customer.partycontactmech.PartyContactMech partyId="ORG002" contactMechId="10009"
+                                                contactMechPurposeId="OFFICE"
+                                                fromDate="2015-08-01" thruDate="2025-02-15"/>
+    <customer.partycontactmech.PartyContactMech partyId="ORG003" contactMechId="10010"
+                                                contactMechPurposeId="EmailPrimary"
+                                                fromDate="2010-01-04" thruDate="2025-01-10"/>
+    <customer.partycontactmech.PartyContactMech partyId="ORG004" contactMechId="10011"
+                                                contactMechPurposeId="WORK"
+                                                fromDate="2010-02-02" thruDate="2025-03-15"/>
+    <customer.partycontactmech.PartyContactMech partyId="PER006" contactMechId="10002"
+                                                contactMechPurposeId="HOME"
+                                                fromDate="2011-04-03" thruDate="2025-01-15"/>
+</entity-facade-xml>

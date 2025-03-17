@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity-facade-xml type="demo">
+    <customer.partyroletype.RoleType roleTypeId="CUSTOMER" description="This is a customer"/>
+    <customer.partyroletype.RoleType roleTypeId="EMPLOYEE" description="This is an employee"/>
+    <customer.partyroletype.RoleType roleTypeId="EMPLOYER" description="This is an employer"/>
+</entity-facade-xml>

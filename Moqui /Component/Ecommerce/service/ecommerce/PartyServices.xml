@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<services xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="http://moqui.org/service-definition-3.xsd">
+    <service verb="find" noun="Customer" type="script" location="component://Customer/script/FindCustomer.groovy">
+        <in-parameters>
+            <parameter name="firstName" entity-name="ecommerce.FindCustomerView"/>
+            <parameter name="lastName" entity-name="ecommerce.FindCustomerView"/>
+            <parameter name="emailAddress"/>
+            <parameter name="countryCode" entity-name="ecommerce.FindCustomerView"/>
+            <parameter name="areaCode" entity-name="ecommerce.FindCustomerView"/>
+            <parameter name="contactNumber" entity-name="ecommerce.FindCustomerView"/>
+            <parameter name="address1" entity-name="ecommerce.FindCustomerView"/>
+            <parameter name="address2" entity-name="ecommerce.FindCustomerView"/>
+            <parameter name="city" entity-name="ecommerce.FindCustomerView"/>
+            <parameter name="postalCode" entity-name="ecommerce.FindCustomerView"/>
+            <parameter name="leadingWildcard" type="boolean" default="false"/>
+            <parameter name="pageIndex" type="Integer" default="0"/>
+            <parameter name="pageSize" type="Integer" default="20"/>
+            <parameter name="pageNoLimit" type="Boolean" default="false"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="partyIdList" type="List"/>
+            <parameter name="partyIdListCount" type="Integer"/>
+            <parameter name="partyIdListPageIndex" type="Integer"/>
+            <parameter name="partyIdListPageSize" type="Integer"/>
+            <parameter name="partyIdListPageSize" type="Integer"/>
+            <parameter name="partyIdListPageMaxIndex" type="Integer"/>
+            <parameter name="partyIdListPageRangeLow" type="Integer"/>
+            <parameter name="partyIdListPageRangeHigh" type="Integer"/>
+        </out-parameters>
+    </service>
+
+    <service verb="create" noun="Customer" type="script"
+             location="component://Customer/script/CreateCustomer.groovy">
+        <in-parameters>
+            <parameter name="firstName" required="true" />
+            <parameter name="lastName" required="true" />
+            <parameter name="emailAddress" required="true"/>
+            <parameter name="address1" required="true"/>
+            <parameter name="address2"/>
+            <parameter name="city" required="true"/>
+            <parameter name="postalCode" required="true"/>
+            <parameter name="countryCode" required="true"/>
+            <parameter name="areaCode" required="true"/>
+            <parameter name="contactNumber" required="true"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="partyId"/>
+        </out-parameters>
+    </service>
+
+    <service verb="store" noun="Customer" type="script"
+             location="component://Customer/script/UpdateCustomer.groovy">
+        <in-parameters>
+            <parameter name="emailAddress" required="true"/>
+            <parameter name="countryCode"/>
+            <parameter name="areaCode"/>
+            <parameter name="contactNumber"/>
+            <parameter name="toName"/>
+            <parameter name="attnName"/>
+            <parameter name="address1"/>
+            <parameter name="address2"/>
+            <parameter name="city"/>
+            <parameter name="postalCode"/>
+            <parameter name="contactMechPurpose"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="emailAddress"/>
+        </out-parameters>
+    </service>
+
+    <service verb="find" noun="Customers">
+        <in-parameters>
+            <parameter name="firstName" />
+            <parameter name="lastName"/>
+            <parameter name="emailAddress"/>
+            <parameter name="city"/>
+        </in-parameters>
+        <out-parameters>
+            <parameter name="customerList" type="List" required="true"/>
+        </out-parameters>
+        <actions>
+            <entity-find entity-name="ecommerce.FindCustomerView" list="customerList">
+                <econditions combine="or">
+                    <econdition field-name="firstName" operator="like" value="%${firstName}%" ignore-if-empty="true"/>
+                    <econdition field-name="lastName" operator="like" value="%${lastName}%" ignore-if-empty="true"/>
+                    <econdition field-name="infoString" operator="like" value="%${emailAddress}%" ignore-if-empty="true"/>
+                    <econdition field-name="city" operator="like" value="%${city}%" ignore-if-empty="true"/>
+                </econditions>
+            </entity-find>
+            <log message="--------${customerList}-------"/>
+        </actions>
+    </service>
+</services>

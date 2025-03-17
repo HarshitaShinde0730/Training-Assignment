@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity-facade-xml type="demo">
+    <customer.partyrole.PartyRole partyId="PER123" roleTypeId="EMPLOYEE"/>
+    <customer.partyrole.PartyRole partyId="PER123" roleTypeId="CUSTOMER"/>
+    <customer.partyrole.PartyRole partyId="ORG456" roleTypeId="EMPLOYER"/>
+    <customer.partyrole.PartyRole partyId="ORG001" roleTypeId="EMPLOYER"/>
+    <customer.partyrole.PartyRole partyId="ORG002" roleTypeId="CUSTOMER"/>
+    <customer.partyrole.PartyRole partyId="ORG003" roleTypeId="EMPLOYER"/>
+    <customer.partyrole.PartyRole partyId="ORG004" roleTypeId="CUSTOMER"/>
+    <customer.partyrole.PartyRole partyId="PER005" roleTypeId="EMPLOYEE"/>
+    <customer.partyrole.PartyRole partyId="PER006" roleTypeId="CUSTOMER"/>
+    <customer.partyrole.PartyRole partyId="PER007" roleTypeId="CUSTOMER"/>
+    <customer.partyrole.PartyRole partyId="PER008" roleTypeId="EMPLOYEE"/>
+    <customer.partyrole.PartyRole partyId="PER009" roleTypeId="CUSTOMER"/>
+    <customer.partyrole.PartyRole partyId="PER010" roleTypeId="EMPLOYEE"/>
+    <customer.partyrole.PartyRole partyId="PER009" roleTypeId="EMPLOYEE"/>
+    <customer.partyrole.PartyRole partyId="PER010" roleTypeId="CUSTOMER"/>
+</entity-facade-xml>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity-facade-xml type="demo">
+    <customer.contactmech.ContactMech contactMechId="10000" contactMechTypeEnumId="ctyTelecomNumber"/>
+    <customer.contactmech.ContactMech contactMechId="10001" contactMechTypeEnumId="ctyEmailAddress"
+                                      infoString="example@email.com"/>
+    <customer.contactmech.ContactMech contactMechId="10002" contactMechTypeEnumId="ctyPostalAddress"/>
+    <customer.contactmech.ContactMech contactMechId="10003" contactMechTypeEnumId="ctyTelecomNumber"/>
+    <customer.contactmech.ContactMech contactMechId="10004" contactMechTypeEnumId="ctyEmailAddress"
+                                      infoString="example1@email.com"/>
+    <customer.contactmech.ContactMech contactMechId="10005" contactMechTypeEnumId="ctyPostalAddress"/>
+    <customer.contactmech.ContactMech contactMechId="10006" contactMechTypeEnumId="ctyTelecomNumber"/>
+    <customer.contactmech.ContactMech contactMechId="10007" contactMechTypeEnumId="ctyEmailAddress"
+                                      infoString="example2@email.com"/>
+    <customer.contactmech.ContactMech contactMechId="10008" contactMechTypeEnumId="ctyPostalAddress"/>
+    <customer.contactmech.ContactMech contactMechId="10009" contactMechTypeEnumId="ctyTelecomNumber"/>
+    <customer.contactmech.ContactMech contactMechId="10010" contactMechTypeEnumId="ctyEmailAddress"
+                                      infoString="example3@email.com"/>
+    <customer.contactmech.ContactMech contactMechId="10011" contactMechTypeEnumId="ctyPostalAddress"/>
+</entity-facade-xml>

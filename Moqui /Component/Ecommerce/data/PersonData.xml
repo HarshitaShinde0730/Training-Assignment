@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity-facade-xml type="demo">
+    <customer.person.Person partyId="PER123" firstName="John" lastName="Doe" birthDate="1990-01-01"/>
+    <customer.person.Person partyId="PER005" firstName="Viresh" lastName="Shah" birthDate="2004-09-17"/>
+    <customer.person.Person partyId="PER006" firstName="Virat" lastName="Kohli" birthDate="1990-10-01"/>
+    <customer.person.Person partyId="PER007" firstName="Rohit" lastName="Sharma" birthDate="1980-10-31"/>
+    <customer.person.Person partyId="PER008" firstName="Hardik" lastName="Pandya" birthDate="1995-05-05"/>
+    <customer.person.Person partyId="PER009" firstName="John" lastName="Cena" birthDate="1990-10-01"/>
+    <customer.person.Person partyId="PER010" firstName="Randy" lastName="Doe" birthDate="1992-01-01"/>
+</entity-facade-xml>

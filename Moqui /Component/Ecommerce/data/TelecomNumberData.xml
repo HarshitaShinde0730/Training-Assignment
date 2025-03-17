@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity-facade-xml type="demo">
+    <customer.telecomnumber.TelecomNumber contactMechId="10000" countryCode="1" areaCode="123"
+                                          contactNumber="4567890"/>
+    <customer.telecomnumber.TelecomNumber contactMechId="10003" countryCode="2" areaCode="456"
+                                          contactNumber="1478523690"/>
+    <customer.telecomnumber.TelecomNumber contactMechId="10006" countryCode="3" areaCode="789"
+                                          contactNumber="5487596842"/>
+    <customer.telecomnumber.TelecomNumber contactMechId="10009" countryCode="4" areaCode="123"
+                                          contactNumber="1597532584"/>
+</entity-facade-xml>

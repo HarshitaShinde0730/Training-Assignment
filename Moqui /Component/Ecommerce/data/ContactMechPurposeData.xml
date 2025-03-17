@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity-facade-xml type="demo">
+    <customer.contactmechpurpose.ContactMechPurpose contactMechPurposeId="WORK"
+                                                    description="Work Postal Address"/>
+    <customer.contactmechpurpose.ContactMechPurpose contactMechPurposeId="HOME"
+                                                    description="Home Address"/>
+    <customer.contactmechpurpose.ContactMechPurpose contactMechPurposeId="OFFICE"
+                                                    description="Office address"/>
+    <customer.contactmechpurpose.ContactMechPurpose contactMechPurposeId="EmailPrimary"
+                                                    description="Primary Email"/>
+
+    <customer.contactmechpurpose.ContactMechPurpose contactMechPurposeId="PRIMARY_EMAIL"/>
+    <customer.contactmechpurpose.ContactMechPurpose contactMechPurposeId="PRIMARY_PHONE"/>
+    <customer.contactmechpurpose.ContactMechPurpose contactMechPurposeId="PRIMARY_LOCATION"/>
+</entity-facade-xml>

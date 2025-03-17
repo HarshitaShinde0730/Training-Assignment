@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity-facade-xml type="demo">
+    <customer.postaladdress.PostalAddress contactMechId="10002" toName="John Doe" attnName="Office" address1="123 Main St"
+                                          address2="Suite 100"
+                                          city="Metropolis" postalCode="12345"/>
+    <customer.postaladdress.PostalAddress contactMechId="10005" toName="John Doe" attnName="Home" address1="123 Local St"
+                                          city="Metropolis" postalCode="12345"/>
+    <customer.postaladdress.PostalAddress contactMechId="10008" toName="SoHo Store" attnName="Home" address1="123 Broome St"
+                                          city="New York" postalCode="10012"/>
+    <customer.postaladdress.PostalAddress contactMechId="10011" toName="Roronoa Zoro" attnName="Office"
+                                          address1="123 Wano Street" address2="Egghead Lane"
+                                          city="New Jersey" postalCode="10477"/>
+</entity-facade-xml>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity-facade-xml type="demo">
+    <customer.party.Party partyId="PER123" partyTypeEnumId="PtyPerson"/>
+    <customer.party.Party partyId="ORG456" partyTypeEnumId="PtyOrganization"/>
+    <customer.party.Party partyId="ORG001" partyTypeEnumId="PtyOrganization"/>
+    <customer.party.Party partyId="ORG002" partyTypeEnumId="PtyOrganization"/>
+    <customer.party.Party partyId="ORG003" partyTypeEnumId="PtyOrganization"/>
+    <customer.party.Party partyId="ORG004" partyTypeEnumId="PtyOrganization"/>
+    <customer.party.Party partyId="PER005" partyTypeEnumId="PtyPerson"/>
+    <customer.party.Party partyId="PER006" partyTypeEnumId="PtyPerson"/>
+    <customer.party.Party partyId="PER007" partyTypeEnumId="PtyPerson"/>
+    <customer.party.Party partyId="PER008" partyTypeEnumId="PtyPerson"/>
+    <customer.party.Party partyId="PER009" partyTypeEnumId="PtyPerson"/>
+    <customer.party.Party partyId="PER010" partyTypeEnumId="PtyPerson"/>
+</entity-facade-xml>

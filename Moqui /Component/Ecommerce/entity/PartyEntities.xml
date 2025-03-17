@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchema="http://moqui.org/xsd/entity-definition-3.xsd">
+
+    <entity entity-name="Party" package="ecommerce">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="partyTypeEnumId" type="id"/>
+
+        <relationship type="one" related="moqui.basic.Enumeration" title="PartyType" short-alias="type">
+            <key-map field-name="partyTypeEnumId"/>
+        </relationship>
+        <relationship type="one-nofk" related="ecommerce.Person" short-alias="person" mutable="true"/>
+        <relationship type="one-nofk" related="ecommerce.Organization" short-alias="organization"
+                      mutable="true"/>
+        <relationship type="many" related="ecommerce.PartyRole" short-alias="roles">
+            <key-map field-name="partyId"/>
+        </relationship>
+        <relationship type="many" related="ecommerce.PartyContactMech" short-alias="partycm">
+            <key-map field-name="partyId"/>
+        </relationship>
+
+        <seed-data>
+            <moqui.basic.EnumerationType description="Party Type" enumTypeId="PartyType"/>
+            <moqui.basic.Enumeration description="Person" enumId="PtyPerson" enumTypeId="PartyType"/>
+            <moqui.basic.Enumeration description="Organization" enumId="PtyOrganization" enumTypeId="PartyType"/>
+        </seed-data>
+
+        <master name="default">
+            <detail relationship="type"/>
+            <detail relationship="person"/>
+            <detail relationship="organization"/>
+            <detail relationship="roles"/>
+            <detail relationship="partycm"/>
+        </master>
+     </entity>
+
+    <entity entity-name="Person" package="ecommerce" short-alias="person">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="firstName" type="text-short"/>
+        <field name="lastName" type="text-short"/>
+        <field name="birthDate" type="date"/>
+
+        <relationship type="one" related="ecommerce.Party"/>
+    </entity>
+
+    <entity entity-name="Organization" package="ecommerce">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="organizationName" type="text-short"/>
+
+        <relationship type="one" related="ecommerce.Party"/>
+    </entity>
+
+    <entity entity-name="PartyRole" package="ecommerce">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="roleTypeId" type="id" is-pk="true"/>
+
+        <relationship type="one" related="ecommerce.Party" short-alias="party"/>
+        <relationship type="one" related="ecommerce.RoleType" short-alias="role"/>
+    </entity>
+
+    <entity entity-name="RoleType" package="ecommerce">
+        <field name="roleTypeId" type="id" is-pk="true"/>
+        <field name="description" type="text-medium"/>
+    </entity>
+
+    <entity entity-name="ContactMech" package="ecommerce">
+        <field name="contactMechId" type="id" is-pk="true"/>
+        <field name="contactMechTypeEnumId" type="id"/>
+        <field name="infoString" type="text-medium"/>
+
+        <relationship type="one" related="moqui.basic.Enumeration" short-alias="type"
+                      title="contactMechType">
+            <key-map field-name="contactMechTypeEnumId"/>
+        </relationship>
+        <relationship type="one-nofk" related="ecommerce.TelecomNumber" short-alias="telecomnumber"/>
+        <relationship type="one-nofk" related="ecommerce.PostalAddress" short-alias="postaladdress"/>
+        <relationship type="many" related="ecommerce.PartyContactMech"
+                      short-alias="parties">
+            <key-map field-name="contactMechId"/>
+        </relationship>
+
+        <seed-data>
+            <moqui.basic.EnumerationType description="Contact Mech Type" enumTypeId="contactMechType"/>
+            <moqui.basic.Enumeration description="Telecom Number" enumId="ctyTelecomNumber"
+                                     enumTypeId="contactMechType"/>
+            <moqui.basic.Enumeration description="Postal Address" enumId="ctyPostalAddress"
+                                     enumTypeId="contactMechType"/>
+            <moqui.basic.Enumeration description="Email Address" enumId="ctyEmailAddress"
+                                     enumTypeId="contactMechType"/>
+        </seed-data>
+
+        <master>
+            <detail relationship="type"/>
+            <detail relationship="telecomnumber"/>
+            <detail relationship="postaladdress"/>
+            <detail relationship="parties"/>
+        </master>
+    </entity>
+
+    <entity entity-name="TelecomNumber" package="ecommerce">
+        <field name="contactMechId" type="id" is-pk="true"/>
+        <field name="countryCode" type="text-short"/>
+        <field name="areaCode" type="text-short"/>
+        <field name="contactNumber" type="text-short"/>
+
+        <relationship type="one" related="ecommerce.ContactMech"/>
+    </entity>
+
+    <entity entity-name="PostalAddress" package="ecommerce">
+        <field name="contactMechId" type="id" is-pk="true"/>
+        <field name="toName" type="text-short"/>
+        <field name="attnName" type="text-short"/>
+        <field name="address1" type="text-medium"/>
+        <field name="address2" type="text-medium"/>
+        <field name="city" type="text-short"/>
+        <field name="postalCode" type="text-short"/>
+
+        <relationship type="one" related="ecommerce.ContactMech"/>
+    </entity>
+
+    <entity entity-name="ContactMechPurpose" package="ecommerce">
+        <field name="contactMechPurposeId" type="id" is-pk="true"/>
+        <field name="description" type="text-medium"/>
+    </entity>
+
+    <entity entity-name="PartyContactMech" package="ecommerce">
+        <field name="partyId" type="id" is-pk="true"/>
+        <field name="contactMechId" type="id" is-pk="true"/>
+        <field name="contactMechPurposeId" type="id" is-pk="true"/>
+        <field name="fromDate" type="date" is-pk="true"/>
+        <field name="thruDate" type="date"/>
+
+
+        <relationship type="one" related="ecommerce.Party" short-alias="partycontactmech"/>
+        <relationship type="one" related="ecommerce.ContactMech" short-alias="contactmech"/>
+        <relationship type="one" related="ecommerce.ContactMechPurpose" short-alias="purpose"/>
+    </entity>
+</entities>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<entity-facade-xml type="demo">
+    <customer.organization.Organization partyId="ORG456" organizationName="ABC"/>
+    <customer.organization.Organization partyId="ORG001" organizationName="DEF"/>
+    <customer.organization.Organization partyId="ORG002" organizationName="GHI"/>
+    <customer.organization.Organization partyId="ORG003" organizationName="JKL"/>
+    <customer.organization.Organization partyId="ORG004" organizationName="MNO"/>
+</entity-facade-xml>
