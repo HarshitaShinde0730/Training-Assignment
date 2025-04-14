@@ -1016,6 +1016,9 @@
                 "orderAdjustmentTypeId": {
                   "SALES_TAX": {
                     "@(2,amount)": "[#8].&6.[&5].Tax1"
+                  },
+                  "EXT_PROMO_ADJUSTMENT": {
+                    "@(2,amount)": "[#8].&6.[&5].Tax3"
                   }
                 }
               }
@@ -1025,6 +1028,18 @@
                 "orderIdentificationTypeId": {
                   "SHOPIFY_ORD_ID": {
                     "@(2,idValue)": "[#8].&6.[&5].shopifyOrderId"
+                  }
+                }
+              }
+            },
+            "@(2,orderAdjustments)": {
+              "*": {
+                "orderAdjustmentTypeId": {
+                  "EXT_SHIP_ADJUSTMENT|SHIPPING_CHARGES": {
+                    "@(2,amount)": "[#8].&6.[&5].Tax5"
+                  },
+                  "SHIPPING_SALES_TAX": {
+                    "@(2,amount)": "[#8].&6.[&5].Tax6"
                   }
                 }
               }
@@ -1055,7 +1070,10 @@
           "*": {
             "Tax2": "=doubleSum(@(1,Tax1))",
             "quantityInverse": "=divide(1,@(1,quantity))",
-            "orderTotal": "=divide(@(1,unitPrice), @(1,quantityInverse))"
+            "orderTotal": "=divide(@(1,unitPrice), @(1,quantityInverse))",
+            "DiscountedPrice": "=doubleSum(@(1,orderTotal), @(1,Tax3))",
+            "Shipping1": "=doubleSum(@(1,Tax5))",
+            "Shipping": "=divideAndRound(2,@(1,Shipping1),1)"
           }
         }
       }
@@ -1115,7 +1133,10 @@
             "Filter": "[#4].orderMap&1.Filter",
             "OrderTags": "[#4].orderMap&1.OrderTags",
             "Facility": "[#4].orderMap&1.Facility",
-            "Tax2": "[#4].orderMap&1.Tax3",
+            "DiscountedPrice": "[#4].orderMap&1.Discounted Price",
+            "Shipping": "[#4].orderMap&1.Shipping",
+            "Tax2": "[#4].orderMap&1.Tax",
+            "Tax6": "[#4].orderMap&1.Shipping Tax",
             "shipmentMethodTypeId": "[#4].orderMap&1.Shipping Method",
             "Shipping Type (S-NS/N)": "[#4].orderMap&1.Shipping Type (S-NS/N)",
             "WH": "[#4].orderMap&1.WH",
